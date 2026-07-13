@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Aryak Bhattacharya — AI Master's graduate from DePaul University. Machine learning, deep learning, and intelligent systems." />
+  <title>Aryak Bhattacharya | AI Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <canvas id="grid-canvas" aria-hidden="true"></canvas>
+
+  <nav class="nav" id="nav">
+    <div class="nav-inner container">
+      <a href="#hero" class="nav-logo">
+        <span class="logo-bracket">&lt;</span>AB<span class="logo-bracket">/&gt;</span>
+      </a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Hero -->
+    <section id="hero" class="hero section">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <p class="hero-greeting">
+            <span class="terminal-prompt">$</span> whoami
+          </p>
+          <h1 class="hero-title">
+            <span class="hero-name">Aryak Bhattacharya</span>
+          </h1>
+          <p class="hero-role">
+            <span id="typed-text"></span><span class="cursor-blink">|</span>
+          </p>
+          <p class="hero-desc">
+            AI Master's graduate specializing in machine learning, deep learning,
+            and intelligent systems. I build models that learn, scale, and solve real problems.
+          </p>
+          <div class="hero-actions">
+            <a href="#projects" class="btn btn-primary">View Projects</a>
+            <a href="#contact" class="btn btn-outline">Get in Touch</a>
+          </div>
+          <div class="hero-stats">
+            <div class="stat">
+              <span class="stat-value">MSc</span>
+              <span class="stat-label">AI / ML</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat">
+              <span class="stat-value">MS</span>
+              <span class="stat-label">DePaul</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat">
+              <span class="stat-value">8</span>
+              <span class="stat-label">Projects</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="neural-ring">
+            <svg viewBox="0 0 400 400" class="neural-svg" aria-hidden="true">
+              <defs>
+                <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#00d4ff" />
+                  <stop offset="50%" stop-color="#7c3aed" />
+                  <stop offset="100%" stop-color="#00ff88" />
+                </linearGradient>
+              </defs>
+              <circle cx="200" cy="200" r="160" fill="none" stroke="url(#ringGrad)" stroke-width="1" opacity="0.3" class="ring ring-1" />
+              <circle cx="200" cy="200" r="120" fill="none" stroke="url(#ringGrad)" stroke-width="1" opacity="0.5" class="ring ring-2" />
+              <circle cx="200" cy="200" r="80" fill="none" stroke="url(#ringGrad)" stroke-width="1.5" opacity="0.7" class="ring ring-3" />
+              <circle cx="200" cy="200" r="40" fill="url(#ringGrad)" opacity="0.15" />
+              <g class="nodes">
+                <circle cx="200" cy="40" r="5" fill="#00d4ff" class="node" />
+                <circle cx="360" cy="200" r="5" fill="#7c3aed" class="node" />
+                <circle cx="200" cy="360" r="5" fill="#00ff88" class="node" />
+                <circle cx="40" cy="200" r="5" fill="#00d4ff" class="node" />
+                <circle cx="313" cy="87" r="4" fill="#7c3aed" class="node" />
+                <circle cx="313" cy="313" r="4" fill="#00ff88" class="node" />
+                <circle cx="87" cy="313" r="4" fill="#00d4ff" class="node" />
+                <circle cx="87" cy="87" r="4" fill="#7c3aed" class="node" />
+              </g>
+              <line x1="200" y1="40" x2="360" y2="200" stroke="#00d4ff" stroke-width="0.5" opacity="0.3" />
+              <line x1="360" y1="200" x2="200" y2="360" stroke="#7c3aed" stroke-width="0.5" opacity="0.3" />
+              <line x1="200" y1="360" x2="40" y2="200" stroke="#00ff88" stroke-width="0.5" opacity="0.3" />
+              <line x1="40" y1="200" x2="200" y2="40" stroke="#00d4ff" stroke-width="0.5" opacity="0.3" />
+              <line x1="313" y1="87" x2="87" y2="313" stroke="#7c3aed" stroke-width="0.5" opacity="0.2" />
+              <line x1="87" y1="87" x2="313" y2="313" stroke="#00ff88" stroke-width="0.5" opacity="0.2" />
+            </svg>
+            <div class="hero-badge">
+              <span class="badge-dot"></span>
+              Available for opportunities
+            </div>
+          </div>
+        </div>
+      </div>
+      <a href="#about" class="scroll-indicator" aria-label="Scroll to about section">
+        <span></span>
+      </a>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="section">
+      <div class="container">
+        <header class="section-header">
+          <span class="section-tag">01 — About</span>
+          <h2 class="section-title">Building Intelligence<br /><span class="text-gradient">Into Systems</span></h2>
+        </header>
+        <div class="about-grid">
+          <div class="about-text">
+            <p>
+              I'm an AI engineer with a Master's degree in Artificial Intelligence, passionate about
+              pushing the boundaries of what machines can learn and understand. My work spans
+              computer vision, natural language processing, and reinforcement learning.
+            </p>
+            <p>
+              From research papers to production pipelines, I bridge the gap between cutting-edge
+              theory and deployable solutions. I thrive at the intersection of mathematics,
+              code, and real-world impact.
+            </p>
+            <div class="about-highlights">
+              <div class="highlight">
+                <span class="highlight-icon">◈</span>
+                <div>
+                  <strong>Research-Driven</strong>
+                  <span>Published work & open-source contributions</span>
+                </div>
+              </div>
+              <div class="highlight">
+                <span class="highlight-icon">◈</span>
+                <div>
+                  <strong>Production-Ready</strong>
+                  <span>MLOps, deployment & scalable architectures</span>
+                </div>
+              </div>
+              <div class="highlight">
+                <span class="highlight-icon">◈</span>
+                <div>
+                  <strong>Full-Stack ML</strong>
+                  <span>Data pipelines to model serving</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="about-code glass-card">
+            <div class="code-header">
+              <span class="code-dot red"></span>
+              <span class="code-dot yellow"></span>
+              <span class="code-dot green"></span>
+              <span class="code-filename">profile.py</span>
+            </div>
+            <pre class="code-block"><code><span class="kw">class</span> <span class="cls">Engineer</span>:
+    <span class="kw">def</span> <span class="fn">__init__</span>(<span class="var">self</span>):
+        <span class="var">self</span>.name = <span class="str">"Aryak Bhattacharya"</span>
+        <span class="var">self</span>.degree = <span class="str">"MS Artificial Intelligence"</span>
+        <span class="var">self</span>.school = <span class="str">"DePaul University"</span>
+        <span class="var">self</span>.focus = [
+            <span class="str">"Deep Learning"</span>,
+            <span class="str">"Computer Vision"</span>,
+            <span class="str">"NLP"</span>,
+        ]
+        <span class="var">self</span>.status = <span class="str">"learning()"</span>
+
+    <span class="kw">def</span> <span class="fn">build</span>(<span class="var">self</span>, problem):
+        <span class="kw">return</span> problem.solve(with=<span class="str">"AI"</span>)</code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="section section-alt">
+      <div class="container">
+        <header class="section-header">
+          <span class="section-tag">02 — Skills</span>
+          <h2 class="section-title">Technical <span class="text-gradient">Arsenal</span></h2>
+        </header>
+        <div class="skills-grid">
+          <div class="skill-category glass-card">
+            <div class="skill-icon">🧠</div>
+            <h3>Machine Learning</h3>
+            <ul class="skill-tags">
+              <li>PyTorch</li>
+              <li>TensorFlow</li>
+              <li>Scikit-learn</li>
+              <li>Hugging Face</li>
+              <li>LangChain</li>
+            </ul>
+          </div>
+          <div class="skill-category glass-card">
+            <div class="skill-icon">📊</div>
+            <h3>Data & Analytics</h3>
+            <ul class="skill-tags">
+              <li>Python</li>
+              <li>Pandas</li>
+              <li>NumPy</li>
+              <li>SQL</li>
+              <li>Spark</li>
+            </ul>
+          </div>
+          <div class="skill-category glass-card">
+            <div class="skill-icon">⚙️</div>
+            <h3>MLOps & Cloud</h3>
+            <ul class="skill-tags">
+              <li>Docker</li>
+              <li>Kubernetes</li>
+              <li>AWS / GCP</li>
+              <li>MLflow</li>
+              <li>FastAPI</li>
+            </ul>
+          </div>
+          <div class="skill-category glass-card">
+            <div class="skill-icon">💻</div>
+            <h3>Development</h3>
+            <ul class="skill-tags">
+              <li>Git</li>
+              <li>Linux</li>
+              <li>React</li>
+              <li>TypeScript</li>
+              <li>C++</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="section">
+      <div class="container">
+        <header class="section-header">
+          <span class="section-tag">03 — Projects</span>
+          <h2 class="section-title">Selected <span class="text-gradient">Work</span></h2>
+        </header>
+        <div class="projects-grid">
+          <article class="project-card glass-card featured">
+            <div class="project-number">01</div>
+            <div class="project-content">
+              <div class="project-tags">
+                <span>Python</span><span>AI Assistant</span><span>Local-First</span>
+              </div>
+              <h3>Luna</h3>
+              <p>
+                A personality-evolving desktop AI assistant designed to grow over time — starting
+                reactive and lightweight, evolving into a proactive, personality-aware companion with
+                adaptive memory and modular core architecture.
+              </p>
+              <div class="project-links">
+                <a href="https://github.com/AryakBhattacharya/Luna" target="_blank" rel="noopener noreferrer">GitHub →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card glass-card featured">
+            <div class="project-number">02</div>
+            <div class="project-content">
+              <div class="project-tags">
+                <span>Computer Vision</span><span>Pix2Pix GAN</span><span>Python</span>
+              </div>
+              <h3>Reflection &amp; Shadow Removal</h3>
+              <p>
+                Hybrid CV pipeline combining classical image processing with a 5-channel Pix2Pix GAN.
+                Uses Sobel edges, thresholding, and morphological masks for structural guidance.
+                Trained on ISTD &amp; SIRR datasets with a GUI for real-time enhancement.
+              </p>
+              <div class="project-links">
+                <a href="https://github.com/AryakBhattacharya/Reflection-and-Shadow-Removal" target="_blank" rel="noopener noreferrer">GitHub →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card glass-card">
+            <div class="project-number">03</div>
+            <div class="project-content">
+              <div class="project-tags">
+                <span>Machine Learning</span><span>Python</span>
+              </div>
+              <h3>Star Classification</h3>
+              <p>
+                Using spectral data to classify stars based on their size, distance, and brightness.
+              </p>
+              <div class="project-links">
+                <a href="https://github.com/AryakBhattacharya/StarClassification" target="_blank" rel="noopener noreferrer">GitHub →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card glass-card">
+            <div class="project-number">04</div>
+            <div class="project-content">
+              <div class="project-tags">
+                <span>NLP</span><span>Sentiment Analysis</span><span>Jupyter</span>
+              </div>
+              <h3>ABSA Predictor</h3>
+              <p>
+                Aspect-based sentiment analyzer that extracts opinion polarity toward specific
+                aspects within text — deployed as an interactive Streamlit application.
+              </p>
+              <div class="project-links">
+                <a href="https://github.com/AryakBhattacharya/absa_predictor" target="_blank" rel="noopener noreferrer">GitHub →</a>
+                <a href="https://absapredictor.streamlit.app" target="_blank" rel="noopener noreferrer">Demo →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card glass-card">
+            <div class="project-number">05</div>
+            <div class="project-content">
+              <div class="project-tags">
+                <span>Computer Vision</span><span>Streamlit</span>
+              </div>
+              <h3>Image Enhancer</h3>
+              <p>
+                Interactive image enhancement tool with a web-based Streamlit interface for
+                applying and previewing enhancement filters in real time.
+              </p>
+              <div class="project-links">
+                <a href="https://github.com/AryakBhattacharya/Image-Enhancer" target="_blank" rel="noopener noreferrer">GitHub →</a>
+                <a href="https://image-enhancer.streamlit.app" target="_blank" rel="noopener noreferrer">Demo →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card glass-card">
+            <div class="project-number">06</div>
+            <div class="project-content">
+              <div class="project-tags">
+                <span>Computer Vision</span><span>Python</span><span>Streamlit</span>
+              </div>
+              <h3>Image Compare</h3>
+              <p>
+                Side-by-side image comparison utility built with Python and Streamlit for
+                visual diffing and analysis of image pairs.
+              </p>
+              <div class="project-links">
+                <a href="https://github.com/AryakBhattacharya/Image-Compare" target="_blank" rel="noopener noreferrer">GitHub →</a>
+                <a href="https://image-compare.streamlit.app" target="_blank" rel="noopener noreferrer">Demo →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card glass-card">
+            <div class="project-number">07</div>
+            <div class="project-content">
+              <div class="project-tags">
+                <span>Jupyter Notebook</span><span>Utilities</span>
+              </div>
+              <h3>QR Generator</h3>
+              <p>
+                QR code generation tool built in Jupyter Notebook for creating scannable codes
+                from custom input data.
+              </p>
+              <div class="project-links">
+                <a href="https://github.com/AryakBhattacharya/QR-Generator" target="_blank" rel="noopener noreferrer">GitHub →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card glass-card">
+            <div class="project-number">08</div>
+            <div class="project-content">
+              <div class="project-tags">
+                <span>PHP</span><span>MySQL</span><span>Full-Stack</span>
+              </div>
+              <h3>Student Management System</h3>
+              <p>
+                Web-based student management application with separate admin and student portals,
+                built with PHP, Apache, and MySQL for CRUD operations on student records.
+              </p>
+              <div class="project-links">
+                <a href="https://github.com/AryakBhattacharya/Student-Management" target="_blank" rel="noopener noreferrer">GitHub →</a>
+              </div>
+            </div>
+          </article>
+        </div>
+        <p class="projects-github-link">
+          All repos on <a href="https://github.com/AryakBhattacharya" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </p>
+      </div>
+    </section>
+
+    <!-- Education -->
+    <section id="education" class="section section-alt">
+      <div class="container">
+        <header class="section-header">
+          <span class="section-tag">04 — Education</span>
+          <h2 class="section-title">Academic <span class="text-gradient">Background</span></h2>
+        </header>
+        <div class="timeline">
+          <div class="timeline-item glass-card">
+            <div class="timeline-marker"></div>
+            <div class="timeline-date">Graduate</div>
+            <h3>MS Artificial Intelligence</h3>
+            <p class="timeline-org">DePaul University</p>
+            <p>
+              Graduate studies in artificial intelligence, machine learning, and intelligent systems.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section">
+      <div class="container">
+        <header class="section-header section-header-center">
+          <span class="section-tag">05 — Contact</span>
+          <h2 class="section-title">Let's <span class="text-gradient">Connect</span></h2>
+          <p class="section-subtitle">
+            Open to research collaborations, ML engineering roles, and interesting AI projects.
+          </p>
+        </header>
+        <div class="contact-grid">
+          <a href="mailto:aryakbhattacharya@gmail.com" class="contact-card glass-card">
+            <span class="contact-icon">✉</span>
+            <span class="contact-label">Email</span>
+            <span class="contact-value">aryakbhattacharya@gmail.com</span>
+          </a>
+          <a href="https://github.com/AryakBhattacharya" target="_blank" rel="noopener noreferrer" class="contact-card glass-card">
+            <span class="contact-icon">⌘</span>
+            <span class="contact-label">GitHub</span>
+            <span class="contact-value">@AryakBhattacharya</span>
+          </a>
+          <a href="https://www.linkedin.com/in/aryakbhattacharya/" target="_blank" rel="noopener noreferrer" class="contact-card glass-card">
+            <span class="contact-icon">in</span>
+            <span class="contact-label">LinkedIn</span>
+            <span class="contact-value">/in/aryakbhattacharya</span>
+          </a>
+          <a href="#" class="contact-card glass-card" download>
+            <span class="contact-icon">↓</span>
+            <span class="contact-label">Resume</span>
+            <span class="contact-value">Download CV</span>
+          </a>
+        </div>
+        <form class="contact-form glass-card" id="contact-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" placeholder="John Doe" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="john@example.com" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" placeholder="Tell me about your project..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-full">Send Message</button>
+          <p class="form-note" id="form-note"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p>&copy; 2026 Aryak Bhattacharya. Built with curiosity and code.</p>
+      <p class="footer-mono"><span class="terminal-prompt">$</span> echo "Thanks for visiting!"</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
