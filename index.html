@@ -3,205 +3,216 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Aryak Bhattacharya — AI Master's graduate from DePaul University. Machine learning, deep learning, and intelligent systems." />
-  <title>Aryak Bhattacharya | AI Engineer</title>
+  <meta name="description" content="Aryak Bhattacharya — AI Engineer & Researcher. MS in Artificial Intelligence from DePaul University. Computer Vision, Deep Learning, Agentic Systems, and Full-Stack Engineering." />
+  <title>Aryak Bhattacharya · AI Engineer & Researcher</title>
+  
+  <!-- Modern Clean Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/styles.css?v=2" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <link rel="stylesheet" href="css/styles.css?v=5" />
 </head>
 <body>
-  <canvas id="grid-canvas" aria-hidden="true"></canvas>
 
-  <nav class="nav" id="nav">
-    <div class="nav-inner container">
-      <a href="#hero" class="nav-logo">
-        <span class="logo-bracket">&lt;</span>AB<span class="logo-bracket">/&gt;</span>
+  <!-- Top Scroll Progress Line (Item 4) -->
+  <div id="scroll-progress-bar" aria-hidden="true"></div>
+
+  <!-- ==========================================================================
+       Header & Floating Dock
+       ========================================================================== -->
+  <header class="header-dock">
+    <nav class="nav-pill-bar" id="navbar">
+      <a href="#hero" class="brand-link" aria-label="Home">
+        <span class="brand-bracket">&lt;</span>AB<span class="brand-bracket">/&gt;</span>
       </a>
-      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-      <ul class="nav-links" id="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#education">Education</a></li>
-        <li><a href="#contact">Contact</a></li>
+
+      <ul class="nav-links">
+        <li><a href="#philosophy" class="nav-link">Philosophy</a></li>
+        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#projects" class="nav-link">Systems</a></li>
+        <li><a href="#education" class="nav-link">Education</a></li>
+        <li><a href="#socials" class="nav-link">Socials</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
       </ul>
-    </div>
-  </nav>
+
+      <div class="nav-status-pill">
+        <span class="status-dot"></span>
+        <span>Open to Roles</span>
+      </div>
+
+      <button type="button" class="copy-email-btn" id="copy-email-top" title="Copy email address">
+        <span>✉</span>
+        <span>Copy Email</span>
+      </button>
+
+      <button type="button" class="mobile-menu-toggle" id="mobile-toggle" aria-label="Toggle menu">
+        ☰
+      </button>
+    </nav>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-nav-drawer" id="mobile-drawer" style="display: none;">
+    <a href="#philosophy" class="mobile-link">Philosophy</a>
+    <a href="#skills" class="mobile-link">Skills</a>
+    <a href="#projects" class="mobile-link">Systems &amp; Research</a>
+    <a href="#education" class="mobile-link">Education</a>
+    <a href="#socials" class="mobile-link">Socials</a>
+    <a href="#contact" class="mobile-link">Contact</a>
+    <a href="Resume.pdf" target="_blank" class="mobile-link">Download Resume (PDF)</a>
+  </div>
 
   <main>
-    <!-- Hero -->
-    <section id="hero" class="hero section">
+    <!-- ==========================================================================
+         Hero Section: Editorial Split with Interactive Particle & Wave Canvas
+         ========================================================================== -->
+    <section id="hero" class="hero-section">
+      <!-- Interactive Dynamic Background Canvas (Item 1) -->
+      <canvas id="hero-interactive-canvas" class="hero-interactive-canvas" aria-hidden="true"></canvas>
+
       <div class="container hero-grid">
         <div class="hero-content">
-          <p class="hero-greeting">
-            <span class="terminal-prompt">$</span> whoami
-          </p>
+          <div class="hero-badge-row">
+            <span class="hero-badge">
+              <span class="status-dot"></span>
+              Available for AI/ML Roles
+            </span>
+            <span class="hero-location-badge">DePaul University · MS AI</span>
+          </div>
+
           <h1 class="hero-title">
-            <span class="hero-name">Aryak Bhattacharya</span>
+            Aryak <span class="text-highlight">Bhattacharya</span>
           </h1>
-          <p class="hero-role">
-            <span id="typed-text"></span><span class="cursor-blink">|</span>
+
+          <div class="hero-role-line">
+            <span>&gt; </span>
+            <span id="typed-role">AI Engineer &amp; Researcher</span>
+            <span class="typed-cursor"></span>
+          </div>
+
+          <p class="hero-bio">
+            I design, train, and deploy resilient computer vision pipelines, world-model agents, and scalable full-stack applications. Passionate about bridging theoretical mathematics with production-grade engineering that solves real-world challenges.
           </p>
-          <p class="hero-desc">
-            AI Master's graduate specializing in machine learning, deep learning,
-            and intelligent systems. I build models that learn, scale, and solve real problems.
-          </p>
+
           <div class="hero-actions">
-            <a href="#projects" class="btn btn-primary">View Projects</a>
-            <a href="#contact" class="btn btn-outline">Get in Touch</a>
+            <a href="#projects" class="btn-primary">
+              <span>Explore Systems</span>
+              <span>↓</span>
+            </a>
+            <a href="Resume.pdf" target="_blank" class="btn-secondary" download>
+              <span>Download CV</span>
+              <span>↗</span>
+            </a>
+            <a href="#contact" class="btn-secondary">
+              <span>Get in Touch</span>
+            </a>
           </div>
-          <div class="hero-stats">
-            <div class="stat">
-              <span class="stat-value">MSc</span>
-              <span class="stat-label">AI / ML</span>
-            </div>
-            <div class="stat-divider"></div>
-            <div class="stat">
-              <span class="stat-value">MS</span>
-              <span class="stat-label">DePaul</span>
-            </div>
-            <div class="stat-divider"></div>
-            <div class="stat">
-              <span class="stat-value">10+</span>
-              <span class="stat-label">Projects</span>
-            </div>
+
+          <!-- Tactile Interactive Stickers (Selina-Inspired) -->
+          <div class="hero-stickers-wrap" id="stickers-container">
+            <div class="interactive-sticker" data-tilt>👁️ Computer Vision</div>
+            <div class="interactive-sticker" data-tilt>🧠 World Models</div>
+            <div class="interactive-sticker" data-tilt>⚡ Academic Arc (Live)</div>
+            <div class="interactive-sticker" data-tilt>🛰️ SpaceNet 2</div>
+            <div class="interactive-sticker" data-tilt>🚀 PyTorch &amp; FastAPI</div>
+            <div class="interactive-sticker" data-tilt>🔍 Agentic RAG</div>
           </div>
         </div>
+
         <div class="hero-visual">
-          <div class="neural-ring">
-            <svg viewBox="0 0 400 400" class="neural-svg" aria-hidden="true">
-              <defs>
-                <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stop-color="#00d4ff" />
-                  <stop offset="50%" stop-color="#7c3aed" />
-                  <stop offset="100%" stop-color="#00ff88" />
-                </linearGradient>
-              </defs>
-              <circle cx="200" cy="200" r="160" fill="none" stroke="url(#ringGrad)" stroke-width="1" opacity="0.3" class="ring ring-1" />
-              <circle cx="200" cy="200" r="120" fill="none" stroke="url(#ringGrad)" stroke-width="1" opacity="0.5" class="ring ring-2" />
-              <circle cx="200" cy="200" r="80" fill="none" stroke="url(#ringGrad)" stroke-width="1.5" opacity="0.7" class="ring ring-3" />
-              <circle cx="200" cy="200" r="40" fill="url(#ringGrad)" opacity="0.15" />
-              <g class="nodes">
-                <circle cx="200" cy="40" r="5" fill="#00d4ff" class="node" />
-                <circle cx="360" cy="200" r="5" fill="#7c3aed" class="node" />
-                <circle cx="200" cy="360" r="5" fill="#00ff88" class="node" />
-                <circle cx="40" cy="200" r="5" fill="#00d4ff" class="node" />
-                <circle cx="313" cy="87" r="4" fill="#7c3aed" class="node" />
-                <circle cx="313" cy="313" r="4" fill="#00ff88" class="node" />
-                <circle cx="87" cy="313" r="4" fill="#00d4ff" class="node" />
-                <circle cx="87" cy="87" r="4" fill="#7c3aed" class="node" />
-              </g>
-              <line x1="200" y1="40" x2="360" y2="200" stroke="#00d4ff" stroke-width="0.5" opacity="0.3" />
-              <line x1="360" y1="200" x2="200" y2="360" stroke="#7c3aed" stroke-width="0.5" opacity="0.3" />
-              <line x1="200" y1="360" x2="40" y2="200" stroke="#00ff88" stroke-width="0.5" opacity="0.3" />
-              <line x1="40" y1="200" x2="200" y2="40" stroke="#00d4ff" stroke-width="0.5" opacity="0.3" />
-              <line x1="313" y1="87" x2="87" y2="313" stroke="#7c3aed" stroke-width="0.5" opacity="0.2" />
-              <line x1="87" y1="87" x2="313" y2="313" stroke="#00ff88" stroke-width="0.5" opacity="0.2" />
-            </svg>
-            <div class="hero-badge">
-              <span class="badge-dot"></span>
-              Available for opportunities
+          <div class="portrait-frame" id="portrait-card">
+            <img src="assets/profile.jpg" alt="Aryak Bhattacharya" class="portrait-img" />
+            <div class="portrait-caption">
+              <div class="caption-meta">
+                <h4>Aryak Bhattacharya</h4>
+                <p>MS Artificial Intelligence</p>
+              </div>
+              <span class="portrait-pill-badge">DePaul MS AI</span>
             </div>
-          </div>
-        </div>
-      </div>
-      <a href="#about" class="scroll-indicator" aria-label="Scroll to about section">
-        <span></span>
-      </a>
-    </section>
-
-    <!-- About -->
-    <section id="about" class="section">
-      <div class="container">
-        <header class="section-header">
-          <span class="section-tag">01 — About</span>
-          <h2 class="section-title">Building Intelligence<br /><span class="text-gradient">Into Systems</span></h2>
-        </header>
-        <div class="about-grid">
-          <div class="about-text">
-            <p>
-              I'm an AI engineer with a Master's degree in Artificial Intelligence, passionate about
-              pushing the boundaries of what machines can learn and understand. My work spans
-              computer vision, natural language processing, and reinforcement learning.
-            </p>
-            <p>
-              From research papers to production pipelines, I bridge the gap between cutting-edge
-              theory and deployable solutions. I thrive at the intersection of mathematics,
-              code, and real-world impact.
-            </p>
-            <!--div class="about-highlights">
-              <div class="highlight">
-                <span class="highlight-icon">◈</span>
-                <div>
-                  <strong>Research-Driven</strong>
-                  <span>Published work & open-source contributions</span>
-                </div>
-              </div>
-              <div class="highlight">
-                <span class="highlight-icon">◈</span>
-                <div>
-                  <strong>Production-Ready</strong>
-                  <span>MLOps, deployment & scalable architectures</span>
-                </div>
-              </div>
-              <div class="highlight">
-                <span class="highlight-icon">◈</span>
-                <div>
-                  <strong>Full-Stack ML</strong>
-                  <span>Data pipelines to model serving</span>
-                </div>
-              </div>
-            </div-->
-          </div>
-          <div class="about-code glass-card">
-            <div class="code-header">
-              <span class="code-dot red"></span>
-              <span class="code-dot yellow"></span>
-              <span class="code-dot green"></span>
-              <span class="code-filename">profile.py</span>
-            </div>
-            <pre class="code-block"><code><span class="kw">class</span> <span class="cls">Engineer</span>:
-    <span class="kw">def</span> <span class="fn">__init__</span>(<span class="var">self</span>):
-        <span class="var">self</span>.name = <span class="str">"Aryak Bhattacharya"</span>
-        <span class="var">self</span>.degree = <span class="str">"MS Artificial Intelligence"</span>
-        <span class="var">self</span>.school = <span class="str">"DePaul University"</span>
-        <span class="var">self</span>.focus = [
-            <span class="str">"Deep Learning"</span>,
-            <span class="str">"Computer Vision"</span>,
-            <span class="str">"NLP"</span>,
-        ]
-        <span class="var">self</span>.status = <span class="str">"learning()"</span>
-
-    <span class="kw">def</span> <span class="fn">build</span>(<span class="var">self</span>, problem):
-        <span class="kw">return</span> problem.solve(with=<span class="str">"AI"</span>)</code></pre>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Skills -->
-    <section id="skills" class="section section-alt">
+    <!-- ==========================================================================
+         Section 01 — Engineering Philosophy (Selina-Inspired Mindset)
+         ========================================================================== -->
+    <section id="philosophy" class="section section-alt">
       <div class="container">
-        <header class="section-header">
-          <span class="section-tag">02 — Skills</span>
-          <h2 class="section-title">Technical <span class="text-gradient">Arsenal</span></h2>
+        <header class="section-header reveal-element">
+          <span class="section-tag">01 — Philosophy</span>
+          <h2 class="section-title">How I Think &amp; <span class="text-highlight">Build</span></h2>
+          <p class="section-subtitle">
+            Core principles that guide how I research, evaluate, and deploy intelligent systems.
+          </p>
         </header>
+
+        <div class="philosophy-grid">
+          <div class="philosophy-card reveal-element stagger-1">
+            <span class="philosophy-num">01</span>
+            <h3>Grounded in Mathematics, Proven in Code</h3>
+            <p>
+              Anyone can import pre-trained weights. The real engineering begins with understanding loss landscape geometry, receptive field dynamics, and latency budgets — knowing precisely when a classical feature pipeline beats a 7B-parameter brute force.
+            </p>
+            <div class="card-footer-quote">
+              <span>// Principle: Rigorous theory prevents costly training cycles.</span>
+            </div>
+          </div>
+
+          <div class="philosophy-card reveal-element stagger-2">
+            <span class="philosophy-num">02</span>
+            <h3>Data Quality Over Architecture Chasing</h3>
+            <p>
+              Model architectures are multipliers on dataset integrity. Meticulous annotation auditing, edge-case mining, synthetic domain adaptation, and distribution-shift detection yield greater improvements than blind hyperparameter grid search.
+            </p>
+            <div class="card-footer-quote">
+              <span>// Principle: The dataset is the ceiling of model capability.</span>
+            </div>
+          </div>
+
+          <div class="philosophy-card reveal-element stagger-3">
+            <span class="philosophy-num">03</span>
+            <h3>The Loop Isn't Complete Until It Ships</h3>
+            <p>
+              An ML model isolated in a Jupyter notebook is an experiment, not a solution. Real-world impact demands serialization, high-throughput inference endpoints, automated evaluation guardrails, and human-centered user experiences.
+            </p>
+            <div class="card-footer-quote">
+              <span>// Principle: Research must translate into deployable utility.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         Section 02 — Technical Arsenal
+         ========================================================================== -->
+    <section id="skills" class="section">
+      <div class="container">
+        <header class="section-header reveal-element">
+          <span class="section-tag">02 — Technical Arsenal</span>
+          <h2 class="section-title">Technologies &amp; <span class="text-highlight">Tooling</span></h2>
+          <p class="section-subtitle">
+            Battle-tested frameworks, architectures, and development environments.
+          </p>
+        </header>
+
         <div class="skills-grid">
-          <div class="skill-category glass-card">
+          <div class="skill-category reveal-element stagger-1">
             <div class="skill-icon">🧠</div>
-            <h3>Machine Learning</h3>
+            <h3>Deep Learning &amp; ML</h3>
             <ul class="skill-tags">
               <li>PyTorch</li>
               <li>TensorFlow</li>
               <li>Scikit-learn</li>
               <li>Hugging Face</li>
-              <li>LangChain</li>
+              <li>Model Quantization</li>
+              <li>Inference Optimization</li>
             </ul>
           </div>
-          <div class="skill-category glass-card">
+
+          <div class="skill-category reveal-element stagger-2">
             <div class="skill-icon">👁️</div>
             <h3>Computer Vision</h3>
             <ul class="skill-tags">
@@ -209,35 +220,38 @@
               <li>U-Net</li>
               <li>DeepLabV3+</li>
               <li>SegFormer</li>
+              <li>Pix2Pix GAN</li>
               <li>ResNet</li>
             </ul>
           </div>
-          <div class="skill-category glass-card">
+
+          <div class="skill-category reveal-element stagger-3">
             <div class="skill-icon">💬</div>
-            <h3>NLP &amp; LLMs</h3>
+            <h3>Agentic AI &amp; NLP</h3>
             <ul class="skill-tags">
               <li>Transformers</li>
-              <li>T5</li>
-              <li>RAG</li>
+              <li>RAG Architectures</li>
               <li>FAISS</li>
               <li>LangChain</li>
               <li>SentenceTransformers</li>
-              <li>Hugging Face</li>
+              <li>T5</li>
             </ul>
           </div>
-          <div class="skill-category glass-card">
+
+          <div class="skill-category reveal-element stagger-4">
             <div class="skill-icon">🌐</div>
             <h3>Web &amp; Full-Stack</h3>
             <ul class="skill-tags">
               <li>React</li>
               <li>FastAPI</li>
-              <li>JavaScript</li>
               <li>REST APIs</li>
+              <li>JavaScript (ES6+)</li>
               <li>HTML5 / CSS3</li>
               <li>Vite</li>
             </ul>
           </div>
-          <div class="skill-category glass-card">
+
+          <div class="skill-category reveal-element stagger-5">
             <div class="skill-icon">📊</div>
             <h3>Data &amp; Databases</h3>
             <ul class="skill-tags">
@@ -249,13 +263,14 @@
               <li>Supabase</li>
             </ul>
           </div>
-          <div class="skill-category glass-card">
+
+          <div class="skill-category reveal-element stagger-6">
             <div class="skill-icon">💻</div>
-            <h3>Development &amp; Tools</h3>
+            <h3>Engineering &amp; Tools</h3>
             <ul class="skill-tags">
               <li>Python</li>
               <li>Git &amp; GitHub</li>
-              <li>Google OAuth</li>
+              <li>Google OAuth 2.0</li>
               <li>Java</li>
               <li>C++</li>
               <li>Google Colab</li>
@@ -265,279 +280,726 @@
       </div>
     </section>
 
-    <!-- Projects -->
-    <section id="projects" class="section">
+    <!-- ==========================================================================
+         Section 03 — Engineered Systems & Research (Renamed from Selected Works)
+         ========================================================================== -->
+    <section id="projects" class="section section-alt">
       <div class="container">
-        <header class="section-header">
-          <span class="section-tag">03 — Projects</span>
-          <h2 class="section-title">Selected <span class="text-gradient">Works</span></h2>
-        </header>
-        <div class="projects-grid">
-          
-          <article class="project-card glass-card featured">
-            <div class="project-number">01</div>
-            <div class="project-content">
-              <div class="project-tags">
-                <span>Python</span><span>Computer Vision</span><span>Semantic Segmentation</span>
+        
+        <!-- Header with Interactive View Switcher -->
+        <div class="projects-header-wrap reveal-element">
+          <div>
+            <span class="section-tag">03 — Systems &amp; Research</span>
+            <h2 class="section-title">Engineered Systems &amp; <span class="text-highlight">Research</span></h2>
+            <p class="section-subtitle">
+              Inspect between the interactive filter cards or the curated deep-dive timeline below.
+            </p>
+          </div>
+
+          <!-- Dual Mode Switcher -->
+          <div class="view-mode-switcher" role="tablist">
+            <button type="button" class="view-mode-btn active" id="btn-view-filter" data-view="filter">
+              <span>🏷️</span>
+              <span>Filter Cards</span>
+            </button>
+            <button type="button" class="view-mode-btn" id="btn-view-timeline" data-view="timeline">
+              <span>⏱️</span>
+              <span>Case-Study Timeline</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- ====================================================================
+             VIEW A: Interactive Filter Pills View (Default)
+             ==================================================================== -->
+        <div class="filter-grid-view active-view" id="view-filter-container">
+          <!-- Filter Buttons -->
+          <div class="projects-filter-bar reveal-element">
+            <button type="button" class="filter-pill active" data-filter="all">All (9)</button>
+            <button type="button" class="filter-pill" data-filter="vision">Computer Vision (3)</button>
+            <button type="button" class="filter-pill" data-filter="agentic">Agentic AI &amp; NLP (3)</button>
+            <button type="button" class="filter-pill" data-filter="fullstack">Full-Stack &amp; Web (1)</button>
+            <button type="button" class="filter-pill" data-filter="ml">Core ML &amp; RL (2)</button>
+          </div>
+
+          <div class="projects-grid" id="projects-grid-root">
+            
+            <!-- Project 01: Building Footprint Extraction -->
+            <article class="project-card featured-card reveal-element" data-category="vision">
+              <div class="card-top-row">
+                <span class="project-num-tag">01 · Computer Vision</span>
+                <span class="project-status-badge">SpaceNet 2 Paris Dataset</span>
               </div>
               <h3>Building Footprint Extraction</h3>
               <p>
-                Deep learning pipeline for extracting building footprints from satellite imagery
-                using U-Net, DeepLabV3+, and SegFormer. Trained on the SpaceNet 2 Paris Buildings
-                dataset with patch-based segmentation, sliding-window inference, and building count analysis.
+                Deep learning segmentation pipeline for extracting building footprints from satellite imagery using U-Net, DeepLabV3+, and SegFormer. Implemented patch-based segmentation, sliding-window inference, and building count polygon metrics.
               </p>
-              <div class="project-links">
-                <a href="https://github.com/AryakBhattacharya/Building-Footprint-Extraction" target="_blank" rel="noopener noreferrer">GitHub →</a>
+              <div class="project-metrics-row">
+                <span class="metric-pill">SegFormer / U-Net / DeepLabV3+</span>
+                <span class="metric-pill">Sliding Window Inference</span>
+                <span class="metric-pill">Satellite Imagery</span>
               </div>
-            </div>
-          </article>
-          
-          <article class="project-card glass-card featured">
-            <div class="project-number">02</div>
-            <div class="project-content">
-              <div class="project-tags">
-                <span>Python</span><span>Agentic AI</span><span>RAG</span>
+              <div class="project-card-footer">
+                <div class="project-card-tags">
+                  <span>Python</span> · <span>Computer Vision</span> · <span>Semantic Segmentation</span>
+                </div>
+                <div class="project-links-row">
+                  <a href="https://github.com/AryakBhattacharya/Building-Footprint-Extraction" target="_blank" rel="noopener noreferrer" class="project-link-btn">
+                    GitHub ↗
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <!-- Project 02: Agentic RAG Cleantech -->
+            <article class="project-card featured-card reveal-element" data-category="agentic">
+              <div class="card-top-row">
+                <span class="project-num-tag">02 · Agentic AI</span>
+                <span class="project-status-badge">Semantic Retrieval</span>
               </div>
               <h3>Agentic RAG Cleantech</h3>
               <p>
-                Agentic retrieval-augmented generation system using FAISS and SentenceTransformers
-                for semantic retrieval. Integrates Hugging Face Transformers and LLMs with reasoning
-                and guardrail tools to generate reliable, grounded responses.
+                Agentic retrieval-augmented generation system leveraging FAISS and SentenceTransformers for semantic retrieval. Integrates Hugging Face Transformers and LLM agents with automated reasoning and guardrail verification tools for grounded responses.
               </p>
-              <div class="project-links">
-                <a href="https://github.com/AryakBhattacharya/Agentic-RAG-Cleantech" target="_blank" rel="noopener noreferrer">GitHub →</a>
+              <div class="project-metrics-row">
+                <span class="metric-pill">FAISS Vector Store</span>
+                <span class="metric-pill">SentenceTransformers</span>
+                <span class="metric-pill">Agent Guardrails</span>
               </div>
-            </div>
-          </article>
-          
-          <article class="project-card glass-card featured">
-            <div class="project-number">03</div>
-            <div class="project-content">
-              <div class="project-tags">
-                <span>Python</span><span>NLP</span><span>T5</span><span>Transformers</span>
+              <div class="project-card-footer">
+                <div class="project-card-tags">
+                  <span>Python</span> · <span>Agentic AI</span> · <span>RAG</span> · <span>Vector Search</span>
+                </div>
+                <div class="project-links-row">
+                  <a href="https://github.com/AryakBhattacharya/Agentic-RAG-Cleantech" target="_blank" rel="noopener noreferrer" class="project-link-btn">
+                    GitHub ↗
+                  </a>
+                </div>
               </div>
-              <h3>NLP to SQL with Error Correction</h3>
-              <p>
-                Deep learning pipeline for converting natural language queries into SQL using a
-                GRU-based error-correction model and T5 transformer. Improved robustness to noisy
-                user queries and schema mismatches, achieving 98% training and 86% test accuracy.
-              </p>
-              <div class="project-links">
-                <a href="https://github.com/AryakBhattacharya/NLP-to-SQL-Error-Recovery" target="_blank" rel="noopener noreferrer">GitHub →</a>
-              </div>
-            </div>
-          </article>
-          
-          <article class="project-card glass-card featured">
-            <div class="project-number">04</div>
-            <div class="project-content">
-              <div class="project-tags">
-                <span>Computer Vision</span><span>Person ReId</span><span>Deep Learning</span>
-              </div>
-              <h3>Person Re-ID</h3>
-              <p>
-                Hybrid person re-identification pipeline combining ResNet-18 deep embeddings with
-                HOG, LBP, Fourier, and wavelet features. Evaluated on Market-1501, improving Rank-1
-                accuracy from 4.42% to 57.57% through deep and classical feature fusion.
-              </p>
-              <div class="project-links">
-                <a href="https://github.com/AryakBhattacharya/Person-Re-ID" target="_blank" rel="noopener noreferrer">GitHub →</a>
-              </div>
-            </div>
-          </article>
+            </article>
 
-          <article class="project-card glass-card featured">
-            <div class="project-number">05</div>
-            <div class="project-content">
-              <div class="project-tags">
-                <span>Computer Vision</span><span>Pix2Pix GAN</span><span>Python</span>
-              </div>
-              <h3>Reflection &amp; Shadow Removal</h3>
-              <p>
-                Hybrid CV pipeline combining classical image processing with a 5-channel Pix2Pix GAN.
-                Uses Sobel edges, thresholding, and morphological masks for structural guidance.
-                Trained on ISTD &amp; SIRR datasets with a GUI for real-time enhancement.
-              </p>
-              <div class="project-links">
-                <a href="https://github.com/AryakBhattacharya/Reflection-and-Shadow-Removal" target="_blank" rel="noopener noreferrer">GitHub →</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="project-card glass-card featured">
-            <div class="project-number">06</div>
-            <div class="project-content">
-              <div class="project-tags">
-                <span>Reinforcement Learning</span><span>PyTorch</span><span>Python</span>
-              </div>
-              <h3>Highway World Model</h3>
-              <p>
-                Dreamer-based reinforcement learning system implementing an RSSM world model with
-                actor-critic architecture for autonomous highway driving. Trained for simulation
-                and prediction, achieving a prediction error of 16.23 MSE.
-              </p>
-              <div class="project-links">
-                <a href="https://github.com/AryakBhattacharya/Highway-World-Model" target="_blank" rel="noopener noreferrer">GitHub →</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="project-card glass-card featured">
-            <div class="project-number">07</div>
-            <div class="project-content">
-              <div class="project-tags">
-                <span>React</span><span>FastAPI</span><span>Python</span><span>PostgreSQL</span><span>Full-Stack</span>
+            <!-- Project 03: Academic Arc (Featured Flagship) -->
+            <article class="project-card featured-card reveal-element" data-category="fullstack">
+              <div class="card-top-row">
+                <span class="project-num-tag">03 · Production Platform</span>
+                <span class="project-status-badge live">🟢 Live in Production · academicarc.in</span>
               </div>
               <h3>Academic Arc</h3>
               <p>
-                Full-stack digital student magazine and creative showcase platform celebrating talent beyond the classroom. Built with a React frontend and FastAPI backend, featuring multimedia student submissions, editorial curation, Google OAuth authentication, social engagement (likes &amp; comments), and a comprehensive administrative moderation dashboard.
+                Full-stack digital student cultural magazine and talent showcase platform. Features multimedia student submissions across literature, visual art, and audio performances, with editorial approval workflows, Google OAuth authentication, social engagement (likes &amp; comments), and a comprehensive administrative moderation suite.
               </p>
-              <div class="project-links">
-                <a href="https://academicarc.in" target="_blank" rel="noopener noreferrer">Live Site →</a>
+              <div class="project-metrics-row">
+                <span class="metric-pill">React + Vite</span>
+                <span class="metric-pill">FastAPI Backend</span>
+                <span class="metric-pill">PostgreSQL / SQLAlchemy</span>
+                <span class="metric-pill">Google OAuth</span>
               </div>
-            </div>
-          </article>
+              <div class="project-card-footer">
+                <div class="project-card-tags">
+                  <span>React</span> · <span>FastAPI</span> · <span>PostgreSQL</span> · <span>Full-Stack</span>
+                </div>
+                <div class="project-links-row">
+                  <a href="https://academicarc.in" target="_blank" rel="noopener noreferrer" class="project-link-btn">
+                    Live Site ↗
+                  </a>
+                </div>
+              </div>
+            </article>
 
-          <article class="project-card glass-card">
-            <div class="project-number">08</div>
-            <div class="project-content">
-              <div class="project-tags">
-                <span>Machine Learning</span><span>Python</span>
+            <!-- Project 04: Highway World Model -->
+            <article class="project-card featured-card reveal-element" data-category="ml">
+              <div class="card-top-row">
+                <span class="project-num-tag">04 · Reinforcement Learning</span>
+                <span class="project-status-badge">16.23 MSE Error</span>
               </div>
-              <h3>Star Classification</h3>
+              <h3>Highway World Model</h3>
               <p>
-                Using spectral data to classify stars based on their size, distance, and brightness.
+                Dreamer-based reinforcement learning architecture implementing a Recurrent State Space Model (RSSM) with actor-critic architecture for autonomous highway driving simulation and forward-trajectory prediction.
               </p>
-              <div class="project-links">
-                <a href="https://github.com/AryakBhattacharya/StarClassification" target="_blank" rel="noopener noreferrer">GitHub →</a>
+              <div class="project-metrics-row">
+                <span class="metric-pill">RSSM World Model</span>
+                <span class="metric-pill">Actor-Critic RL</span>
+                <span class="metric-pill">Latent Imagination</span>
               </div>
-            </div>
-          </article>
+              <div class="project-card-footer">
+                <div class="project-card-tags">
+                  <span>PyTorch</span> · <span>Reinforcement Learning</span> · <span>Dreamer RSSM</span>
+                </div>
+                <div class="project-links-row">
+                  <a href="https://github.com/AryakBhattacharya/Highway-World-Model" target="_blank" rel="noopener noreferrer" class="project-link-btn">
+                    GitHub ↗
+                  </a>
+                </div>
+              </div>
+            </article>
 
-          <article class="project-card glass-card">
-            <div class="project-number">09</div>
-            <div class="project-content">
-              <div class="project-tags">
-                <span>NLP</span><span>Sentiment Analysis</span><span>Jupyter</span>
+            <!-- Project 05: NLP to SQL with Error Correction -->
+            <article class="project-card reveal-element stagger-1" data-category="agentic">
+              <div class="card-top-row">
+                <span class="project-num-tag">05 · NLP</span>
+                <span class="project-status-badge">86% Test Accuracy</span>
+              </div>
+              <h3>NLP to SQL with Error Correction</h3>
+              <p>
+                Deep learning pipeline for converting natural language queries into executable SQL using a GRU-based error-recovery model and T5 transformer, robust to query ambiguity and schema mismatch.
+              </p>
+              <div class="project-card-footer">
+                <div class="project-card-tags">
+                  <span>Python</span> · <span>T5</span> · <span>NLP</span>
+                </div>
+                <div class="project-links-row">
+                  <a href="https://github.com/AryakBhattacharya/NLP-to-SQL-Error-Recovery" target="_blank" rel="noopener noreferrer" class="project-link-btn">
+                    GitHub ↗
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <!-- Project 06: Person Re-ID -->
+            <article class="project-card reveal-element stagger-2" data-category="vision">
+              <div class="card-top-row">
+                <span class="project-num-tag">06 · Computer Vision</span>
+                <span class="project-status-badge">57.57% Rank-1</span>
+              </div>
+              <h3>Person Re-ID</h3>
+              <p>
+                Hybrid person re-identification pipeline fusing ResNet-18 deep embeddings with classical HOG, LBP, Fourier, and wavelet texture descriptors on Market-1501 benchmark.
+              </p>
+              <div class="project-card-footer">
+                <div class="project-card-tags">
+                  <span>ResNet-18</span> · <span>Feature Fusion</span> · <span>CV</span>
+                </div>
+                <div class="project-links-row">
+                  <a href="https://github.com/AryakBhattacharya/Person-Re-ID" target="_blank" rel="noopener noreferrer" class="project-link-btn">
+                    GitHub ↗
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <!-- Project 07: Reflection & Shadow Removal -->
+            <article class="project-card reveal-element stagger-3" data-category="vision">
+              <div class="card-top-row">
+                <span class="project-num-tag">07 · Generative CV</span>
+                <span class="project-status-badge">ISTD &amp; SIRR</span>
+              </div>
+              <h3>Reflection &amp; Shadow Removal</h3>
+              <p>
+                5-channel Pix2Pix GAN pipeline combined with morphological thresholding and Sobel edge filters for image artifact removal, packaged with an interactive real-time enhancement GUI.
+              </p>
+              <div class="project-card-footer">
+                <div class="project-card-tags">
+                  <span>Pix2Pix GAN</span> · <span>Sobel Filters</span> · <span>Python</span>
+                </div>
+                <div class="project-links-row">
+                  <a href="https://github.com/AryakBhattacharya/Reflection-and-Shadow-Removal" target="_blank" rel="noopener noreferrer" class="project-link-btn">
+                    GitHub ↗
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <!-- Project 08: ABSA Predictor -->
+            <article class="project-card reveal-element stagger-1" data-category="agentic">
+              <div class="card-top-row">
+                <span class="project-num-tag">08 · NLP</span>
+                <span class="project-status-badge">Streamlit App</span>
               </div>
               <h3>ABSA Predictor</h3>
               <p>
-                Aspect-based sentiment analyzer that extracts opinion polarity toward specific
-                aspects within text — deployed as an interactive Streamlit application.
+                Aspect-based sentiment analysis model extracting nuanced polarity towards specific text entities, deployed through an interactive Streamlit application.
               </p>
-              <div class="project-links">
-                <a href="https://github.com/AryakBhattacharya/absa_predictor" target="_blank" rel="noopener noreferrer">GitHub →</a>
-                <a href="https://absapredictor.streamlit.app" target="_blank" rel="noopener noreferrer">Demo →</a>
+              <div class="project-card-footer">
+                <div class="project-card-tags">
+                  <span>Sentiment Analysis</span> · <span>Streamlit</span>
+                </div>
+                <div class="project-links-row">
+                  <a href="https://github.com/AryakBhattacharya/absa_predictor" target="_blank" rel="noopener noreferrer" class="project-link-btn">
+                    GitHub ↗
+                  </a>
+                  <a href="https://absapredictor.streamlit.app" target="_blank" rel="noopener noreferrer" class="project-link-btn">
+                    Demo ↗
+                  </a>
+                </div>
               </div>
+            </article>
+
+            <!-- Project 09: Star Classification -->
+            <article class="project-card reveal-element stagger-2" data-category="ml">
+              <div class="card-top-row">
+                <span class="project-num-tag">09 · Classical ML</span>
+                <span class="project-status-badge">Spectral Analysis</span>
+              </div>
+              <h3>Star Classification</h3>
+              <p>
+                Machine learning model classifying stellar spectral data based on temperature, luminosity, size, and absolute magnitude distributions.
+              </p>
+              <div class="project-card-footer">
+                <div class="project-card-tags">
+                  <span>Scikit-learn</span> · <span>Astrophysics Data</span>
+                </div>
+                <div class="project-links-row">
+                  <a href="https://github.com/AryakBhattacharya/StarClassification" target="_blank" rel="noopener noreferrer" class="project-link-btn">
+                    GitHub ↗
+                  </a>
+                </div>
+              </div>
+            </article>
+
+          </div>
+        </div>
+
+        <!-- ====================================================================
+             VIEW B: Curated Case-Study Timeline View (Alternative Deep Dive)
+             ==================================================================== -->
+        <div class="curated-timeline-view" id="view-timeline-container">
+          
+          <!-- Case Study 01: Academic Arc -->
+          <article class="timeline-case-study reveal-element">
+            <div class="case-study-hero-strip">
+              <div class="case-tag-group">
+                <span class="case-num">Case Study 01</span>
+                <span class="project-status-badge live">Live in Production</span>
+                <span class="case-date">2026</span>
+              </div>
+              <a href="https://academicarc.in" target="_blank" rel="noopener noreferrer" class="project-link-btn">
+                Visit academicarc.in ↗
+              </a>
+            </div>
+
+            <h3 class="case-study-title">Academic Arc — Full-Stack Student Creative Showcase Platform</h3>
+            <p class="case-study-summary">
+              Reinventing the traditional static print school magazine into a vibrant, continuously evolving digital cultural medium. A production-grade platform handling student creative submissions across literature, visual artwork, photography, and instrumental performances.
+            </p>
+
+            <div class="case-study-columns">
+              <div class="case-col">
+                <h5>Architecture</h5>
+                <p>Decoupled React (Vite) frontend with FastAPI backend, asynchronous database queries with SQLAlchemy, and rate-limiting via SlowAPI.</p>
+              </div>
+              <div class="case-col">
+                <h5>Key Innovation</h5>
+                <p>Role-based administrative moderation suite with granular submission statuses, automated email alerts, and Google OAuth 2.0.</p>
+              </div>
+              <div class="case-col">
+                <h5>Impact &amp; Status</h5>
+                <p>Live in public deployment at <strong>academicarc.in</strong>, actively serving student creator submissions, social likes, and editorial curation.</p>
+              </div>
+            </div>
+
+            <div class="case-study-footer">
+              <div class="project-card-tags">
+                <span>FastAPI</span> · <span>React</span> · <span>PostgreSQL</span> · <span>Google OAuth</span> · <span>Vite</span>
+              </div>
+              <a href="https://academicarc.in" target="_blank" rel="noopener noreferrer" class="btn-primary">
+                Explore Live Platform ↗
+              </a>
+            </div>
+          </article>
+
+          <!-- Case Study 02: Building Footprint Extraction -->
+          <article class="timeline-case-study reveal-element">
+            <div class="case-study-hero-strip">
+              <div class="case-tag-group">
+                <span class="case-num">Case Study 02</span>
+                <span class="project-status-badge">SpaceNet 2 Benchmark</span>
+                <span class="case-date">2026</span>
+              </div>
+              <a href="https://github.com/AryakBhattacharya/Building-Footprint-Extraction" target="_blank" rel="noopener noreferrer" class="project-link-btn">
+                View Repository ↗
+              </a>
+            </div>
+
+            <h3 class="case-study-title">High-Resolution Building Footprint Extraction from Satellite Imagery</h3>
+            <p class="case-study-summary">
+              End-to-end computer vision pipeline solving the challenge of high-density structural segmentation from overhead satellite passes, trained and evaluated against the challenging Paris SpaceNet 2 dataset.
+            </p>
+
+            <div class="case-study-columns">
+              <div class="case-col">
+                <h5>Model Progression</h5>
+                <p>Benchmarked and refined across U-Net, DeepLabV3+ with atrous convolutions, and state-of-the-art hierarchical SegFormer transformers.</p>
+              </div>
+              <div class="case-col">
+                <h5>Inference Pipeline</h5>
+                <p>Sliding-window patch inference with edge overlap suppression to seamlessly reconstruct ultra-large geographic image tiles without boundary artifacts.</p>
+              </div>
+              <div class="case-col">
+                <h5>Analytics Output</h5>
+                <p>Automated vector polygon extraction, surface area calculation, and building count metrics for urban planning analysis.</p>
+              </div>
+            </div>
+
+            <div class="case-study-footer">
+              <div class="project-card-tags">
+                <span>Computer Vision</span> · <span>SegFormer</span> · <span>DeepLabV3+</span> · <span>Satellite Imagery</span>
+              </div>
+              <a href="https://github.com/AryakBhattacharya/Building-Footprint-Extraction" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+                GitHub Repository ↗
+              </a>
+            </div>
+          </article>
+
+          <!-- Case Study 03: Highway World Model -->
+          <article class="timeline-case-study reveal-element">
+            <div class="case-study-hero-strip">
+              <div class="case-tag-group">
+                <span class="case-num">Case Study 03</span>
+                <span class="project-status-badge">Reinforcement Learning</span>
+                <span class="case-date">2026</span>
+              </div>
+              <a href="https://github.com/AryakBhattacharya/Highway-World-Model" target="_blank" rel="noopener noreferrer" class="project-link-btn">
+                View Repository ↗
+              </a>
+            </div>
+
+            <h3 class="case-study-title">Highway World Model — Latent Imagination for Autonomous Driving</h3>
+            <p class="case-study-summary">
+              Implementation of a Dreamer-style Recurrent State Space Model (RSSM). The agent constructs an internal generative latent representation of highway dynamics, allowing it to "imagine" future trajectories and train an actor-critic policy without real-world collisions.
+            </p>
+
+            <div class="case-study-columns">
+              <div class="case-col">
+                <h5>World Model Core</h5>
+                <p>Recurrent State Space Model (RSSM) splitting deterministic recurrent state and stochastic latent vectors for robust temporal modeling.</p>
+              </div>
+              <div class="case-col">
+                <h5>Policy Learning</h5>
+                <p>Actor-critic agent learns purely inside imagined latent rollouts, optimizing lane navigation, overtaking decisions, and collision avoidance.</p>
+              </div>
+              <div class="case-col">
+                <h5>Evaluation</h5>
+                <p>Achieved a predictive reconstruction error of 16.23 MSE on complex multi-lane highway driving traces.</p>
+              </div>
+            </div>
+
+            <div class="case-study-footer">
+              <div class="project-card-tags">
+                <span>PyTorch</span> · <span>RSSM World Model</span> · <span>Autonomous Driving</span>
+              </div>
+              <a href="https://github.com/AryakBhattacharya/Highway-World-Model" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+                GitHub Repository ↗
+              </a>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         Section 04 — Academic Background (Expansive Full Width)
+         ========================================================================== -->
+    <section id="education" class="section">
+      <div class="container">
+        <header class="section-header reveal-element">
+          <span class="section-tag">04 — Education</span>
+          <h2 class="section-title">Academic <span class="text-highlight">Background</span></h2>
+          <p class="section-subtitle">
+            Formal foundations in intelligent systems, machine learning theory, and computer science.
+          </p>
+        </header>
+
+        <div class="academic-timeline">
+          <div class="academic-card reveal-element stagger-1">
+            <div class="academic-top-row">
+              <span class="academic-stage">Graduate Degree</span>
+              <span class="academic-period">Graduated</span>
+            </div>
+            <h3>MS Artificial Intelligence</h3>
+            <p class="academic-institution">DePaul University</p>
+            <p>
+              Rigorous graduate curriculum focused on deep learning architectures, computer vision, natural language processing, reinforcement learning, and production machine learning engineering. Hands-on research evaluating state-of-the-art vision models and world-model architectures.
+            </p>
+            <div class="academic-focus-pills">
+              <span>Deep Learning</span>
+              <span>Computer Vision</span>
+              <span>Generative Models</span>
+              <span>Reinforcement Learning</span>
+              <span>ML Systems Design</span>
+            </div>
+          </div>
+
+          <div class="academic-card reveal-element stagger-2">
+            <div class="academic-top-row">
+              <span class="academic-stage">Undergraduate Degree</span>
+              <span class="academic-period">Undergraduate</span>
+            </div>
+            <h3>BTech Computer Science &amp; Engineering</h3>
+            <p class="academic-institution">Techno Main Salt Lake</p>
+            <p>
+              Comprehensive studies in core computer science, discrete mathematics, object-oriented software engineering, data structures, algorithms, relational databases, and distributed systems development.
+            </p>
+            <div class="academic-focus-pills">
+              <span>Data Structures &amp; Algorithms</span>
+              <span>Operating Systems</span>
+              <span>Database Management</span>
+              <span>Software Engineering</span>
+            </div>
+          </div>
+
+          <div class="academic-card reveal-element stagger-3">
+            <div class="academic-top-row">
+              <span class="academic-stage">Diploma</span>
+              <span class="academic-period">Foundation</span>
+            </div>
+            <h3>Diploma in Computer Science &amp; Technology</h3>
+            <p class="academic-institution">Techno Main Polytechnic Salt Lake</p>
+            <p>
+              Foundational grounding in systems programming, computer architecture, networking protocols, structured programming, and practical application implementation.
+            </p>
+            <div class="academic-focus-pills">
+              <span>C / C++</span>
+              <span>Computer Networks</span>
+              <span>Systems Architecture</span>
+              <span>Applied Computing</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         Section 05 — Socials & Network Showcase Hub (Item 5 Redesign)
+         ========================================================================== -->
+    <section id="socials" class="section section-alt">
+      <div class="container">
+        <header class="section-header reveal-element">
+          <span class="section-tag">05 — Socials &amp; Network</span>
+          <h2 class="section-title">What's Up On The <span class="text-highlight">Socials</span></h2>
+          <p class="section-subtitle">
+            Follow my research updates, behind-the-scenes engineering builds, and visual captures.
+          </p>
+        </header>
+
+        <div class="social-hub-container">
+          <!-- Instagram Billboard Hub -->
+          <article class="social-billboard-card reveal-element stagger-1" data-brand="instagram">
+            <div class="billboard-header">
+              <div class="billboard-profile-meta">
+                <div class="billboard-avatar-badge">
+                  <svg class="social-brand-svg instagram-svg" viewBox="0 0 24 24" width="28" height="28" fill="none" aria-label="Instagram">
+                    <defs>
+                      <radialGradient id="ig-grad-real" r="150%" cx="30%" cy="107%">
+                        <stop stop-color="#fdf497" offset="0%" />
+                        <stop stop-color="#fdf497" offset="5%" />
+                        <stop stop-color="#fd5949" offset="45%" />
+                        <stop stop-color="#d6249f" offset="60%" />
+                        <stop stop-color="#285AEB" offset="90%" />
+                      </radialGradient>
+                    </defs>
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke="url(#ig-grad-real)" stroke-width="2"></rect>
+                    <circle cx="12" cy="12" r="4.2" stroke="url(#ig-grad-real)" stroke-width="2"></circle>
+                    <circle cx="17.6" cy="6.4" r="1.2" fill="url(#ig-grad-real)"></circle>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="billboard-handle-title">
+                    @zeus_1_6_
+                    <span class="verified-icon" title="Creator Profile">✓</span>
+                  </h3>
+                  <span class="billboard-network-tag">Instagram · Visual Journal</span>
+                </div>
+              </div>
+            </div>
+
+            <p class="billboard-bio">
+              Visual captures, street photography, candid snapshots, late-night build sessions, and travel frames across Chicago and beyond.
+            </p>
+
+            <div class="instagram-preview-grid">
+              <div class="instagram-tile">
+                <span class="tile-emoji">🏙️</span>
+                <span class="tile-caption">Urban Lines &amp; Chicago Frames</span>
+              </div>
+              <div class="instagram-tile">
+                <span class="tile-emoji">📷</span>
+                <span class="tile-caption">35mm Aesthetic &amp; Travel Diary</span>
+              </div>
+              <div class="instagram-tile">
+                <span class="tile-emoji">⚡</span>
+                <span class="tile-caption">Late-Night Code &amp; Lab Builds</span>
+              </div>
+            </div>
+
+            <div class="billboard-action-footer">
+              <span class="billboard-status-note">Active Story &amp; Feed Updates</span>
+              <a href="https://www.instagram.com/zeus_1_6_/" target="_blank" rel="noopener noreferrer" class="btn-social-action instagram-btn">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true">
+                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                </svg>
+                <span>Follow on Instagram</span>
+                <span>↗</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- LinkedIn Billboard Hub -->
+          <article class="social-billboard-card reveal-element stagger-2" data-brand="linkedin">
+            <div class="billboard-header">
+              <div class="billboard-profile-meta">
+                <div class="billboard-avatar-badge">
+                  <svg class="social-brand-svg linkedin-svg" viewBox="0 0 24 24" width="28" height="28" fill="#0077b5" aria-label="LinkedIn">
+                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="billboard-handle-title">
+                    Aryak Bhattacharya
+                    <span class="verified-icon" title="Verified Profile">✓</span>
+                  </h3>
+                  <span class="billboard-network-tag">LinkedIn · Professional Network</span>
+                </div>
+              </div>
+            </div>
+
+            <p class="billboard-bio">
+              Engineering breakthroughs, deep learning architectures, research discussions, system design breakdowns, and professional collaborations.
+            </p>
+
+            <div class="linkedin-chips-list">
+              <span class="linkedin-chip">🧠 Deep Learning &amp; PyTorch</span>
+              <span class="linkedin-chip">👁️ Computer Vision &amp; SpaceNet</span>
+              <span class="linkedin-chip">🤖 Autonomous World Models</span>
+              <span class="linkedin-chip">⚡ Full-Stack ML (FastAPI + React)</span>
+            </div>
+
+            <div class="billboard-action-footer">
+              <span class="billboard-status-note">Open to AI/ML Opportunities</span>
+              <a href="https://www.linkedin.com/in/aryakbhattacharya/" target="_blank" rel="noopener noreferrer" class="btn-social-action linkedin-btn">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true">
+                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                </svg>
+                <span>Connect on LinkedIn</span>
+                <span>↗</span>
+              </a>
             </div>
           </article>
         </div>
-        <p class="projects-github-link">
-          All repos on <a href="https://github.com/AryakBhattacharya" target="_blank" rel="noopener noreferrer">GitHub</a>
-        </p>
-      </div>
-    </section>
 
-    <!-- Education -->
-    <section id="education" class="section section-alt">
-      <div class="container">
-        <header class="section-header">
-          <span class="section-tag">04 — Education</span>
-          <h2 class="section-title">Academic <span class="text-gradient">Background</span></h2>
-        </header>
-        <div class="timeline">
-          <div class="timeline-item glass-card">
-            <div class="timeline-marker"></div>
-            <div class="timeline-date">Graduate</div>
-            <h3>MS Artificial Intelligence</h3>
-            <p class="timeline-org">DePaul University</p>
-            <p>
-              Graduate studies in artificial intelligence, machine learning, and intelligent systems.
-            </p>
-          </div>
-          <div class="timeline-item glass-card">
-            <div class="timeline-marker"></div>
-            <div class="timeline-date">Undergraduate</div>
-            <h3>BTech Computer Science & Engineering</h3>
-            <p class="timeline-org">Techno Main Salt Lake</p>
-            <p>
-              Undergraduate studies in computer science, software engineering, algorithms, data structures, and application development.
-            </p>
-          </div>
-          <div class="timeline-item glass-card">
-            <div class="timeline-marker"></div>
-            <div class="timeline-date">Diploma</div>
-            <h3>Diploma in Computer Science & Technology</h3>
-            <p class="timeline-org">Techno Main Polytechnic Salt Lake</p>
-            <p>
-              Foundation in programming, computer systems, networking, and software development principles.
-            </p>
+        <!-- Animated Infinite Social Marquee -->
+        <div class="social-ticker-wrap reveal-element stagger-3" aria-hidden="true">
+          <div class="social-ticker-track">
+            <span>✦ INSTAGRAM @zeus_1_6_</span>
+            <span class="ticker-dot">·</span>
+            <span>💼 LINKEDIN /in/aryakbhattacharya</span>
+            <span class="ticker-dot">·</span>
+            <span>⌘ GITHUB @AryakBhattacharya</span>
+            <span class="ticker-dot">·</span>
+            <span>🧠 DEPAUL UNIVERSITY MS AI</span>
+            <span class="ticker-dot">·</span>
+            <span>⚡ COMPUTER VISION &amp; DEEP LEARNING</span>
+            <span class="ticker-dot">·</span>
+            <span>✦ INSTAGRAM @zeus_1_6_</span>
+            <span class="ticker-dot">·</span>
+            <span>💼 LINKEDIN /in/aryakbhattacharya</span>
+            <span class="ticker-dot">·</span>
+            <span>⌘ GITHUB @AryakBhattacharya</span>
+            <span class="ticker-dot">·</span>
+            <span>🧠 DEPAUL UNIVERSITY MS AI</span>
+            <span class="ticker-dot">·</span>
+            <span>⚡ COMPUTER VISION &amp; DEEP LEARNING</span>
           </div>
         </div>
+
       </div>
     </section>
 
-    <!-- Contact -->
+    <!-- ==========================================================================
+         Section 06 — Contact & Inquiries (LinkedIn removed as requested)
+         ========================================================================== -->
     <section id="contact" class="section">
-      <div class="container">
-        <header class="section-header section-header-center">
-          <span class="section-tag">05 — Contact</span>
-          <h2 class="section-title">Let's <span class="text-gradient">Connect</span></h2>
-          <p class="section-subtitle">
-            Open to research collaborations, ML engineering roles, and interesting AI projects.
+      <div class="container contact-grid">
+        <div class="contact-info-col reveal-element stagger-1">
+          <div>
+            <span class="section-tag">06 — Contact</span>
+            <h3>Let's build something <span class="text-highlight">meaningful</span>.</h3>
+          </div>
+          <p>
+            Whether you have an ambitious AI engineering role, a research collaboration, or want to discuss vision models and world-model systems, my inbox is always open.
           </p>
-        </header>
-        <div class="contact-grid">
-          <a href="mailto:aryakbhattacharya@gmail.com" class="contact-card glass-card">
-            <span class="contact-icon">✉</span>
-            <span class="contact-label">Email</span>
-            <span class="contact-value">aryakbhattacharya@gmail.com</span>
-          </a>
-          <a href="https://github.com/AryakBhattacharya" target="_blank" rel="noopener noreferrer" class="contact-card glass-card">
-            <span class="contact-icon">⌘</span>
-            <span class="contact-label">GitHub</span>
-            <span class="contact-value">@AryakBhattacharya</span>
-          </a>
-          <a href="https://www.linkedin.com/in/aryakbhattacharya/" target="_blank" rel="noopener noreferrer" class="contact-card glass-card">
-            <span class="contact-icon">in</span>
-            <span class="contact-label">LinkedIn</span>
-            <span class="contact-value">/in/aryakbhattacharya</span>
-          </a>
-          <a href="Resume.pdf" class="contact-card glass-card" download>
-            <span class="contact-icon">↓</span>
-            <span class="contact-label">Resume</span>
-            <span class="contact-value">Download Resume</span>
-          </a>
+
+          <div class="direct-channels-list">
+            <a href="mailto:aryakbhattacharya@gmail.com" class="channel-pill-card" id="contact-email-link">
+              <span class="channel-icon">✉</span>
+              <div class="channel-meta">
+                <h5>Email Me Directly</h5>
+                <span>aryakbhattacharya@gmail.com</span>
+              </div>
+            </a>
+
+            <a href="https://github.com/AryakBhattacharya" target="_blank" rel="noopener noreferrer" class="channel-pill-card">
+              <span class="channel-icon">⌘</span>
+              <div class="channel-meta">
+                <h5>GitHub Profile</h5>
+                <span>@AryakBhattacharya</span>
+              </div>
+            </a>
+
+            <a href="Resume.pdf" target="_blank" class="channel-pill-card" download>
+              <span class="channel-icon">↓</span>
+              <div class="channel-meta">
+                <h5>Download Resume</h5>
+                <span>Latest Curriculum Vitae (PDF)</span>
+              </div>
+            </a>
+          </div>
         </div>
-        <form class="contact-form glass-card" id="contact-form">
+
+        <form class="contact-form reveal-element stagger-2" id="contact-form">
           <div class="form-row">
             <div class="form-group">
-              <label for="name">Name</label>
-              <input type="text" id="name" name="name" placeholder="John Doe" required />
+              <label for="name">Your Name</label>
+              <input type="text" id="name" name="name" placeholder="Alex Morgan" required />
             </div>
             <div class="form-group">
-              <label for="email">Email</label>
-              <input type="email" id="email" name="email" placeholder="john@example.com" required />
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" placeholder="alex@company.com" required />
             </div>
           </div>
+
           <div class="form-group">
-            <label for="message">Message</label>
-            <textarea id="message" name="message" rows="5" placeholder="Tell me about your project..." required></textarea>
+            <label for="message">Your Message</label>
+            <textarea id="message" name="message" rows="5" placeholder="Tell me about your team, project, or what you'd like to build together..." required></textarea>
           </div>
-          <button type="submit" class="btn btn-primary btn-full">Send Message</button>
+
+          <button type="submit" class="btn-primary btn-full">
+            <span>Send Message</span>
+            <span>→</span>
+          </button>
           <p class="form-note" id="form-note"></p>
         </form>
       </div>
     </section>
   </main>
 
+  <!-- ==========================================================================
+       Footer
+       ========================================================================== -->
   <footer class="footer">
     <div class="container footer-inner">
-      <p>&copy; 2026 Aryak Bhattacharya. Built with curiosity and code.</p>
-      <p class="footer-mono"><span class="terminal-prompt">$</span> echo "Thanks for visiting!"</p>
+      <div class="footer-brand">
+        &copy; 2026 Aryak Bhattacharya · Built with craft, code &amp; curiosity.
+      </div>
+      <a href="#hero" class="footer-back-to-top">
+        Back to top ↑
+      </a>
     </div>
   </footer>
 
-  <script src="js/main.js"></script>
+  <!-- Floating Scroll Percentage / Back-to-Top Pill (Item 4) -->
+  <button type="button" class="floating-scroll-indicator" id="floating-scroll-btn" title="Back to top">
+    <span>↑</span>
+    <span id="scroll-percentage-text">0%</span>
+  </button>
+
+  <!-- Interactive Toast Notification -->
+  <div class="toast-notice" id="toast-notice">
+    <span>✓</span>
+    <span id="toast-msg">Email copied to clipboard!</span>
+  </div>
+
+  <script src="js/main.js?v=5"></script>
 </body>
 </html>
