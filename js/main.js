@@ -9,6 +9,49 @@
 (function () {
   "use strict";
 
+  // ---- 0. Light / Dark Mode Theme Toggle ----
+  const themeToggleBtn = document.getElementById("theme-toggle-btn");
+  const mobileThemeToggle = document.getElementById("mobile-theme-toggle");
+
+  function syncThemeUI(theme) {
+    const isLight = theme === "light";
+    const label = isLight ? "Switch to dark mode" : "Switch to light mode";
+    if (themeToggleBtn) {
+      themeToggleBtn.setAttribute("aria-label", label);
+      themeToggleBtn.setAttribute("title", label);
+    }
+    if (mobileThemeToggle) {
+      mobileThemeToggle.textContent = isLight ? "☾ Switch to Dark Mode" : "☀ Switch to Light Mode";
+    }
+  }
+
+  function toggleTheme() {
+    const currentIsLight = document.documentElement.getAttribute("data-theme") === "light";
+    const nextTheme = currentIsLight ? "dark" : "light";
+
+    if (nextTheme === "light") {
+      document.documentElement.setAttribute("data-theme", "light");
+    } else {
+      document.documentElement.removeAttribute("data-theme");
+    }
+
+    try {
+      localStorage.setItem("portfolio-theme", nextTheme);
+    } catch (e) {}
+
+    syncThemeUI(nextTheme);
+  }
+
+  const initialTheme = document.documentElement.getAttribute("data-theme") === "light" ? "light" : "dark";
+  syncThemeUI(initialTheme);
+
+  if (themeToggleBtn) {
+    themeToggleBtn.addEventListener("click", toggleTheme);
+  }
+  if (mobileThemeToggle) {
+    mobileThemeToggle.addEventListener("click", toggleTheme);
+  }
+
   // ---- 1. Interactive Dynamic Hero Canvas (Item 1) ----
   const heroSection = document.getElementById("hero");
   const heroCanvas = document.getElementById("hero-interactive-canvas");
@@ -73,6 +116,8 @@
       }
 
       ctx.clearRect(0, 0, width, height);
+      const isLight = document.documentElement.getAttribute("data-theme") === "light";
+      const nodeRgb = isLight ? "37, 99, 235" : "56, 189, 248";
 
       // Soft interactive radial spotlight glow at cursor position
       if (mouse.active) {
@@ -84,9 +129,15 @@
           mouse.y,
           mouse.radius
         );
-        glowGradient.addColorStop(0, "rgba(56, 189, 248, 0.14)");
-        glowGradient.addColorStop(0.5, "rgba(37, 99, 235, 0.06)");
-        glowGradient.addColorStop(1, "rgba(9, 10, 13, 0)");
+        if (isLight) {
+          glowGradient.addColorStop(0, "rgba(2, 132, 199, 0.14)");
+          glowGradient.addColorStop(0.5, "rgba(37, 99, 235, 0.06)");
+          glowGradient.addColorStop(1, "rgba(246, 248, 252, 0)");
+        } else {
+          glowGradient.addColorStop(0, "rgba(56, 189, 248, 0.14)");
+          glowGradient.addColorStop(0.5, "rgba(37, 99, 235, 0.06)");
+          glowGradient.addColorStop(1, "rgba(9, 10, 13, 0)");
+        }
 
         ctx.fillStyle = glowGradient;
         ctx.beginPath();
@@ -125,7 +176,7 @@
 
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(56, 189, 248, ${p.alpha})`;
+        ctx.fillStyle = `rgba(${nodeRgb}, ${isLight ? p.alpha * 1.15 : p.alpha})`;
         ctx.fill();
 
         for (let j = i + 1; j < nodes.length; j++) {
@@ -135,12 +186,12 @@
           const dist = Math.sqrt(dx * dx + dy * dy);
 
           if (dist < 135) {
-            const lineAlpha = (1 - dist / 135) * 0.16;
+            const lineAlpha = (1 - dist / 135) * (isLight ? 0.20 : 0.16);
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(p2.x, p2.y);
-            ctx.strokeStyle = `rgba(56, 189, 248, ${lineAlpha})`;
-            ctx.lineWidth = 0.8;
+            ctx.strokeStyle = `rgba(${nodeRgb}, ${lineAlpha})`;
+            ctx.lineWidth = 0.85;
             ctx.stroke();
           }
         }
@@ -177,13 +228,7 @@
     }
 
     if (navbarEl) {
-      if (scrollTop > 80) {
-        navbarEl.style.boxShadow = "0 20px 48px rgba(0, 0, 0, 0.65)";
-        navbarEl.style.borderColor = "rgba(56, 189, 248, 0.28)";
-      } else {
-        navbarEl.style.boxShadow = "0 16px 36px rgba(0, 0, 0, 0.4)";
-        navbarEl.style.borderColor = "rgba(255, 255, 255, 0.12)";
-      }
+      navbarEl.classList.toggle("is-scrolled", scrollTop > 80);
     }
   }, { passive: true });
 
@@ -338,11 +383,119 @@
     });
   }
 
-  // ---- 6. DUAL VIEW SWITCHER: Filter Cards vs Case-Study Timeline ----
+  // ---- 6. DUAL VIEW SWITCHER & SCROLL-DRIVEN HORIZONTAL PROJECTS TRACK ----
+  const projectsSection = document.getElementById("projects");
+  const projectsRunway = document.getElementById("projects-scroll-runway");
+  const trackViewport = document.getElementById("projects-track-viewport");
+  const projectsTrack = document.getElementById("projects-grid-root");
+  const controlsBar = document.getElementById("projects-controls-bar");
+  const hudProgressFill = document.getElementById("hud-progress-fill");
+  const hudProgressPercent = document.getElementById("hud-progress-percent");
+  const hudPrevBtn = document.getElementById("hud-prev-btn");
+  const hudNextBtn = document.getElementById("hud-next-btn");
+
   const btnViewFilter = document.getElementById("btn-view-filter");
   const btnViewTimeline = document.getElementById("btn-view-timeline");
   const containerFilter = document.getElementById("view-filter-container");
   const containerTimeline = document.getElementById("view-timeline-container");
+
+  let maxTranslate = 0;
+  let targetTranslateX = 0;
+  let currentTranslateX = 0;
+  let isAnimatingTrack = false;
+
+  function animateTrack() {
+    if (!projectsTrack || !projectsSection) {
+      isAnimatingTrack = false;
+      return;
+    }
+    if (window.innerWidth <= 768 || projectsSection.classList.contains("timeline-mode-active")) {
+      isAnimatingTrack = false;
+      return;
+    }
+
+    const diff = targetTranslateX - currentTranslateX;
+    if (Math.abs(diff) < 0.35) {
+      currentTranslateX = targetTranslateX;
+      projectsTrack.style.transform = `translate3d(${currentTranslateX.toFixed(2)}px, 0, 0)`;
+      isAnimatingTrack = false;
+      return;
+    }
+
+    currentTranslateX += diff * 0.18;
+    projectsTrack.style.transform = `translate3d(${currentTranslateX.toFixed(2)}px, 0, 0)`;
+    requestAnimationFrame(animateTrack);
+  }
+
+  function startTrackAnimation() {
+    if (!isAnimatingTrack) {
+      isAnimatingTrack = true;
+      requestAnimationFrame(animateTrack);
+    }
+  }
+
+  function computeHorizontalTarget() {
+    if (!projectsRunway || !projectsSection || !projectsTrack) return;
+    if (window.innerWidth <= 768 || projectsSection.classList.contains("timeline-mode-active")) {
+      return;
+    }
+
+    const rect = projectsRunway.getBoundingClientRect();
+    const vh = window.innerHeight;
+    const totalScrollable = Math.max(1, projectsRunway.offsetHeight - vh);
+    const rawProgress = maxTranslate > 0 ? (-rect.top / totalScrollable) : 0;
+    const progress = Math.max(0, Math.min(1, rawProgress));
+
+    targetTranslateX = -(progress * maxTranslate);
+
+    if (hudProgressFill) {
+      hudProgressFill.style.width = `${(progress * 100).toFixed(1)}%`;
+    }
+    if (hudProgressPercent) {
+      hudProgressPercent.textContent = `${Math.round(progress * 100)}%`;
+    }
+
+    startTrackAnimation();
+  }
+
+  function updateProjectsTrackLayout() {
+    if (!projectsRunway || !projectsSection || !trackViewport || !projectsTrack) return;
+
+    if (window.innerWidth <= 768 || projectsSection.classList.contains("timeline-mode-active")) {
+      projectsRunway.style.height = "auto";
+      projectsTrack.style.transform = "";
+      maxTranslate = 0;
+      targetTranslateX = 0;
+      currentTranslateX = 0;
+      return;
+    }
+
+    const trackWidth = projectsTrack.scrollWidth;
+    const viewportWidth = trackViewport.clientWidth;
+    maxTranslate = Math.max(0, trackWidth - viewportWidth);
+
+    const vh = window.innerHeight;
+    projectsRunway.style.height = `${vh + maxTranslate}px`;
+    computeHorizontalTarget();
+  }
+
+  window.addEventListener("scroll", computeHorizontalTarget, { passive: true });
+  window.addEventListener("resize", () => {
+    updateProjectsTrackLayout();
+    updateBiDirectionalReveals();
+  }, { passive: true });
+
+  if (hudPrevBtn) {
+    hudPrevBtn.addEventListener("click", () => {
+      window.scrollBy({ top: -440, behavior: "smooth" });
+    });
+  }
+
+  if (hudNextBtn) {
+    hudNextBtn.addEventListener("click", () => {
+      window.scrollBy({ top: 440, behavior: "smooth" });
+    });
+  }
 
   function setProjectView(viewName) {
     if (viewName === "timeline") {
@@ -350,6 +503,10 @@
       btnViewFilter?.classList.remove("active");
       containerTimeline?.classList.add("active-view");
       containerFilter?.classList.remove("active-view");
+
+      projectsSection?.classList.add("timeline-mode-active");
+      projectsSection?.classList.remove("projects-horizontal-mode");
+      controlsBar?.classList.add("is-hidden");
 
       containerTimeline?.querySelectorAll(".reveal-element").forEach((el) => {
         el.classList.add("is-revealed");
@@ -360,10 +517,19 @@
       containerFilter?.classList.add("active-view");
       containerTimeline?.classList.remove("active-view");
 
+      projectsSection?.classList.remove("timeline-mode-active");
+      projectsSection?.classList.add("projects-horizontal-mode");
+      controlsBar?.classList.remove("is-hidden");
+
       containerFilter?.querySelectorAll(".reveal-element").forEach((el) => {
         el.classList.add("is-revealed");
       });
     }
+
+    requestAnimationFrame(() => {
+      updateProjectsTrackLayout();
+      updateBiDirectionalReveals();
+    });
   }
 
   if (btnViewFilter && btnViewTimeline) {
@@ -371,7 +537,7 @@
     btnViewTimeline.addEventListener("click", () => setProjectView("timeline"));
   }
 
-  // ---- 7. Projects Filter Pills (for View A) ----
+  // ---- 7. Projects Filter Pills (for View A Horizontal Track) ----
   const filterPills = document.querySelectorAll(".filter-pill");
   const projectCards = document.querySelectorAll("#projects-grid-root .project-card");
 
@@ -383,23 +549,32 @@
       const category = pill.getAttribute("data-filter");
 
       projectCards.forEach((card) => {
-        const cardCat = card.getAttribute("data-category");
-        if (category === "all" || cardCat === category) {
+        const cardCats = (card.getAttribute("data-category") || "").split(/\s+/);
+        if (category === "all" || cardCats.includes(category)) {
           card.style.display = "flex";
-          setTimeout(() => {
-            card.style.opacity = "1";
-            card.style.transform = "translateY(0) scale(1)";
-          }, 10);
+          card.style.opacity = "1";
+          card.style.transform = "";
+          card.classList.add("is-revealed");
         } else {
-          card.style.opacity = "0";
-          card.style.transform = "translateY(12px) scale(0.97)";
-          setTimeout(() => {
-            card.style.display = "none";
-          }, 180);
+          card.style.display = "none";
         }
       });
+
+      updateProjectsTrackLayout();
+
+      // Snap cleanly back to the start of the horizontal track if user scrolled past it
+      if (projectsRunway && projectsSection && window.innerWidth > 768) {
+        const runwayRect = projectsRunway.getBoundingClientRect();
+        if (runwayRect.top < -20) {
+          window.scrollTo({ top: projectsSection.offsetTop, behavior: "smooth" });
+        }
+      }
     });
   });
+
+  // Initialize horizontal track measurements after layout & fonts settle
+  window.addEventListener("load", updateProjectsTrackLayout);
+  setTimeout(updateProjectsTrackLayout, 100);
 
   // ---- 8. Interactive 3D Tilt for Portrait Card ----
   const portraitCard = document.getElementById("portrait-card");

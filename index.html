@@ -11,7 +11,17 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   
-  <link rel="stylesheet" href="css/styles.css?v=5" />
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem("portfolio-theme");
+        if (saved === "light") {
+          document.documentElement.setAttribute("data-theme", "light");
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="stylesheet" href="css/styles.css?v=10" />
 </head>
 <body>
 
@@ -46,6 +56,23 @@
         <span>Copy Email</span>
       </button>
 
+      <button type="button" class="theme-toggle-btn" id="theme-toggle-btn" aria-label="Switch to light mode" title="Switch to light mode">
+        <svg class="theme-icon icon-sun" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="4"></circle>
+          <path d="M12 2v2"></path>
+          <path d="M12 20v2"></path>
+          <path d="m4.93 4.93 1.41 1.41"></path>
+          <path d="m17.66 17.66 1.41 1.41"></path>
+          <path d="M2 12h2"></path>
+          <path d="M20 12h2"></path>
+          <path d="m6.34 17.66-1.41 1.41"></path>
+          <path d="m19.07 4.93-1.41 1.41"></path>
+        </svg>
+        <svg class="theme-icon icon-moon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+        </svg>
+      </button>
+
       <button type="button" class="mobile-menu-toggle" id="mobile-toggle" aria-label="Toggle menu">
         ☰
       </button>
@@ -61,6 +88,7 @@
     <a href="#socials" class="mobile-link">Socials</a>
     <a href="#contact" class="mobile-link">Contact</a>
     <a href="Resume.pdf" target="_blank" class="mobile-link">Download Resume (PDF)</a>
+    <button type="button" class="mobile-theme-btn" id="mobile-theme-toggle">☀ Switch to Light Mode</button>
   </div>
 
   <main>
@@ -206,6 +234,7 @@
               <li>PyTorch</li>
               <li>TensorFlow</li>
               <li>Scikit-learn</li>
+              <li>Active Learning</li>
               <li>Hugging Face</li>
               <li>Model Quantization</li>
               <li>Inference Optimization</li>
@@ -229,10 +258,11 @@
             <div class="skill-icon">💬</div>
             <h3>Agentic AI &amp; NLP</h3>
             <ul class="skill-tags">
+              <li>LangGraph</li>
+              <li>LangChain</li>
               <li>Transformers</li>
               <li>RAG Architectures</li>
               <li>FAISS</li>
-              <li>LangChain</li>
               <li>SentenceTransformers</li>
               <li>T5</li>
             </ul>
@@ -245,6 +275,7 @@
               <li>React</li>
               <li>FastAPI</li>
               <li>REST APIs</li>
+              <li>Redis &amp; Celery</li>
               <li>JavaScript (ES6+)</li>
               <li>HTML5 / CSS3</li>
               <li>Vite</li>
@@ -260,6 +291,7 @@
               <li>SQL</li>
               <li>PostgreSQL</li>
               <li>SQLAlchemy</li>
+              <li>Alembic</li>
               <li>Supabase</li>
             </ul>
           </div>
@@ -269,6 +301,7 @@
             <h3>Engineering &amp; Tools</h3>
             <ul class="skill-tags">
               <li>Python</li>
+              <li>Docker Compose</li>
               <li>Git &amp; GitHub</li>
               <li>Google OAuth 2.0</li>
               <li>Java</li>
@@ -283,51 +316,96 @@
     <!-- ==========================================================================
          Section 03 — Engineered Systems & Research (Renamed from Selected Works)
          ========================================================================== -->
-    <section id="projects" class="section section-alt">
-      <div class="container">
-        
-        <!-- Header with Interactive View Switcher -->
-        <div class="projects-header-wrap reveal-element">
-          <div>
-            <span class="section-tag">03 — Systems &amp; Research</span>
-            <h2 class="section-title">Engineered Systems &amp; <span class="text-highlight">Research</span></h2>
-            <p class="section-subtitle">
-              Inspect between the interactive filter cards or the curated deep-dive timeline below.
-            </p>
-          </div>
-
-          <!-- Dual Mode Switcher -->
-          <div class="view-mode-switcher" role="tablist">
-            <button type="button" class="view-mode-btn active" id="btn-view-filter" data-view="filter">
-              <span>🏷️</span>
-              <span>Filter Cards</span>
-            </button>
-            <button type="button" class="view-mode-btn" id="btn-view-timeline" data-view="timeline">
-              <span>⏱️</span>
-              <span>Case-Study Timeline</span>
-            </button>
-          </div>
-        </div>
-
-        <!-- ====================================================================
-             VIEW A: Interactive Filter Pills View (Default)
-             ==================================================================== -->
-        <div class="filter-grid-view active-view" id="view-filter-container">
-          <!-- Filter Buttons -->
-          <div class="projects-filter-bar reveal-element">
-            <button type="button" class="filter-pill active" data-filter="all">All (9)</button>
-            <button type="button" class="filter-pill" data-filter="vision">Computer Vision (3)</button>
-            <button type="button" class="filter-pill" data-filter="agentic">Agentic AI &amp; NLP (3)</button>
-            <button type="button" class="filter-pill" data-filter="fullstack">Full-Stack &amp; Web (1)</button>
-            <button type="button" class="filter-pill" data-filter="ml">Core ML &amp; RL (2)</button>
-          </div>
-
-          <div class="projects-grid" id="projects-grid-root">
+    <section id="projects" class="section section-alt projects-horizontal-mode">
+      <div class="projects-scroll-runway" id="projects-scroll-runway">
+        <div class="projects-sticky-stage" id="projects-sticky-stage">
+          <div class="container">
             
-            <!-- Project 01: Building Footprint Extraction -->
+            <!-- Header with Interactive View Switcher -->
+            <div class="projects-header-wrap reveal-element">
+              <div>
+                <span class="section-tag">03 — Systems &amp; Research</span>
+                <h2 class="section-title">Engineered Systems &amp; <span class="text-highlight">Research</span></h2>
+                <p class="section-subtitle">
+                  Keep scrolling to glide horizontally through systems &amp; research, or switch to the deep-dive timeline.
+                </p>
+              </div>
+
+              <!-- Dual Mode Switcher -->
+              <div class="view-mode-switcher" role="tablist">
+                <button type="button" class="view-mode-btn active" id="btn-view-filter" data-view="filter">
+                  <span>🏷️</span>
+                  <span>Filter Cards</span>
+                </button>
+                <button type="button" class="view-mode-btn" id="btn-view-timeline" data-view="timeline">
+                  <span>⏱️</span>
+                  <span>Case-Study Timeline</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Filter Pills + Horizontal Scroll Progress HUD (View A) -->
+            <div class="projects-controls-bar reveal-element" id="projects-controls-bar">
+              <div class="projects-filter-bar">
+                <button type="button" class="filter-pill active" data-filter="all">All (11)</button>
+                <button type="button" class="filter-pill" data-filter="vision">Computer Vision (3)</button>
+                <button type="button" class="filter-pill" data-filter="agentic">Agentic AI &amp; NLP (4)</button>
+                <button type="button" class="filter-pill" data-filter="fullstack">Full-Stack &amp; Web (2)</button>
+                <button type="button" class="filter-pill" data-filter="ml">Core ML &amp; RL (3)</button>
+              </div>
+
+              <div class="horizontal-scroll-hud" id="horizontal-scroll-hud">
+                <div class="hud-nudge-group">
+                  <button type="button" class="hud-nudge-btn" id="hud-prev-btn" title="Scroll Left" aria-label="Scroll Projects Left">←</button>
+                  <button type="button" class="hud-nudge-btn" id="hud-next-btn" title="Scroll Right" aria-label="Scroll Projects Right">→</button>
+                </div>
+                <div class="hud-progress-track">
+                  <div class="hud-progress-fill" id="hud-progress-fill"></div>
+                </div>
+                <span class="hud-percent" id="hud-progress-percent">0%</span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- ====================================================================
+               VIEW A: Scroll-Driven Horizontal Track (Default)
+               ==================================================================== -->
+          <div class="filter-grid-view active-view" id="view-filter-container">
+            <div class="projects-track-viewport" id="projects-track-viewport">
+              <div class="projects-grid horizontal-track" id="projects-grid-root">
+            
+            <!-- Project 01: AgentFlow -->
+            <article class="project-card featured-card reveal-element" data-category="agentic fullstack">
+              <div class="card-top-row">
+                <span class="project-num-tag">01 · Agentic AI &amp; Full-Stack</span>
+                <span class="project-status-badge developing">🚧 Developing</span>
+              </div>
+              <h3>AgentFlow — AI Workflow Orchestration Platform</h3>
+              <p>
+                Architecting a multi-tenant AI workflow orchestration platform for building and executing custom AI-powered workflows. Features asynchronous REST APIs (FastAPI, Python, SQLAlchemy, PostgreSQL) with JWT authentication and role-based access control, stateful AI agent orchestration via LangGraph and LangChain, distributed background job execution with Redis and Celery, Alembic migrations, and containerized Docker Compose infrastructure.
+              </p>
+              <div class="project-metrics-row">
+                <span class="metric-pill">LangGraph &amp; LangChain</span>
+                <span class="metric-pill">FastAPI + PostgreSQL</span>
+                <span class="metric-pill">Redis &amp; Celery</span>
+                <span class="metric-pill">JWT + RBAC</span>
+                <span class="metric-pill">Docker Compose + Alembic</span>
+              </div>
+              <div class="project-card-footer">
+                <div class="project-card-tags">
+                  <span>Python</span> · <span>LangGraph</span> · <span>FastAPI</span> · <span>PostgreSQL</span> · <span>Docker</span>
+                </div>
+                <div class="project-links-row">
+                  <span class="project-status-badge developing">In Active Development</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Project 02: Building Footprint Extraction -->
             <article class="project-card featured-card reveal-element" data-category="vision">
               <div class="card-top-row">
-                <span class="project-num-tag">01 · Computer Vision</span>
+                <span class="project-num-tag">02 · Computer Vision</span>
                 <span class="project-status-badge">SpaceNet 2 Paris Dataset</span>
               </div>
               <h3>Building Footprint Extraction</h3>
@@ -351,10 +429,10 @@
               </div>
             </article>
 
-            <!-- Project 02: Agentic RAG Cleantech -->
+            <!-- Project 03: Agentic RAG Cleantech -->
             <article class="project-card featured-card reveal-element" data-category="agentic">
               <div class="card-top-row">
-                <span class="project-num-tag">02 · Agentic AI</span>
+                <span class="project-num-tag">03 · Agentic AI</span>
                 <span class="project-status-badge">Semantic Retrieval</span>
               </div>
               <h3>Agentic RAG Cleantech</h3>
@@ -378,10 +456,10 @@
               </div>
             </article>
 
-            <!-- Project 03: Academic Arc (Featured Flagship) -->
+            <!-- Project 04: Academic Arc (Featured Flagship) -->
             <article class="project-card featured-card reveal-element" data-category="fullstack">
               <div class="card-top-row">
-                <span class="project-num-tag">03 · Production Platform</span>
+                <span class="project-num-tag">04 · Production Platform</span>
                 <span class="project-status-badge live">🟢 Live in Production · academicarc.in</span>
               </div>
               <h3>Academic Arc</h3>
@@ -406,10 +484,10 @@
               </div>
             </article>
 
-            <!-- Project 04: Highway World Model -->
+            <!-- Project 05: Highway World Model -->
             <article class="project-card featured-card reveal-element" data-category="ml">
               <div class="card-top-row">
-                <span class="project-num-tag">04 · Reinforcement Learning</span>
+                <span class="project-num-tag">05 · Reinforcement Learning</span>
                 <span class="project-status-badge">16.23 MSE Error</span>
               </div>
               <h3>Highway World Model</h3>
@@ -433,16 +511,46 @@
               </div>
             </article>
 
-            <!-- Project 05: NLP to SQL with Error Correction -->
-            <article class="project-card reveal-element stagger-1" data-category="agentic">
+            <!-- Project 06: Active Learning for Human Activity Recognition -->
+            <article class="project-card reveal-element stagger-1" data-category="ml">
               <div class="card-top-row">
-                <span class="project-num-tag">05 · NLP</span>
+                <span class="project-num-tag">06 · Core ML &amp; Active Learning</span>
+                <span class="project-status-badge">93.83% Macro-F1 AULC</span>
+              </div>
+              <h3>Active Learning for Human Activity Recognition</h3>
+              <p>
+                Machine learning system recognizing six human activities (walking, walking upstairs/downstairs, sitting, standing, and laying) from smartphone accelerometer and gyroscope sensor data. Benchmarked Random Sampling, Uncertainty Sampling, and Query-by-Committee—achieving 93.83% mean Macro-F1 AULC with Query-by-Committee and matching supervised baselines using just 22% labeled data (78% label savings) across five seeds.
+              </p>
+              <div class="project-metrics-row">
+                <span class="metric-pill">93.83% Mean Macro-F1 AULC</span>
+                <span class="metric-pill">78% Label Savings</span>
+                <span class="metric-pill">Query-by-Committee</span>
+              </div>
+              <div class="project-card-footer">
+                <div class="project-card-tags">
+                  <span>Python</span> · <span>Active Learning</span> · <span>Sensor Data</span>
+                </div>
+                <div class="project-links-row">
+                  <span class="project-status-badge">5-Seed Evaluation</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Project 07: NLP to SQL with Error Correction -->
+            <article class="project-card reveal-element stagger-2" data-category="agentic">
+              <div class="card-top-row">
+                <span class="project-num-tag">07 · NLP</span>
                 <span class="project-status-badge">86% Test Accuracy</span>
               </div>
               <h3>NLP to SQL with Error Correction</h3>
               <p>
                 Deep learning pipeline for converting natural language queries into executable SQL using a GRU-based error-recovery model and T5 transformer, robust to query ambiguity and schema mismatch.
               </p>
+              <div class="project-metrics-row">
+                <span class="metric-pill">T5 Transformer</span>
+                <span class="metric-pill">GRU Error Recovery</span>
+                <span class="metric-pill">86% Test Accuracy</span>
+              </div>
               <div class="project-card-footer">
                 <div class="project-card-tags">
                   <span>Python</span> · <span>T5</span> · <span>NLP</span>
@@ -455,16 +563,21 @@
               </div>
             </article>
 
-            <!-- Project 06: Person Re-ID -->
-            <article class="project-card reveal-element stagger-2" data-category="vision">
+            <!-- Project 08: Person Re-ID -->
+            <article class="project-card reveal-element stagger-1" data-category="vision">
               <div class="card-top-row">
-                <span class="project-num-tag">06 · Computer Vision</span>
+                <span class="project-num-tag">08 · Computer Vision</span>
                 <span class="project-status-badge">57.57% Rank-1</span>
               </div>
               <h3>Person Re-ID</h3>
               <p>
                 Hybrid person re-identification pipeline fusing ResNet-18 deep embeddings with classical HOG, LBP, Fourier, and wavelet texture descriptors on Market-1501 benchmark.
               </p>
+              <div class="project-metrics-row">
+                <span class="metric-pill">ResNet-18 Embeddings</span>
+                <span class="metric-pill">HOG / LBP / Wavelets</span>
+                <span class="metric-pill">Market-1501 Benchmark</span>
+              </div>
               <div class="project-card-footer">
                 <div class="project-card-tags">
                   <span>ResNet-18</span> · <span>Feature Fusion</span> · <span>CV</span>
@@ -477,16 +590,21 @@
               </div>
             </article>
 
-            <!-- Project 07: Reflection & Shadow Removal -->
-            <article class="project-card reveal-element stagger-3" data-category="vision">
+            <!-- Project 09: Reflection & Shadow Removal -->
+            <article class="project-card reveal-element stagger-2" data-category="vision">
               <div class="card-top-row">
-                <span class="project-num-tag">07 · Generative CV</span>
+                <span class="project-num-tag">09 · Generative CV</span>
                 <span class="project-status-badge">ISTD &amp; SIRR</span>
               </div>
               <h3>Reflection &amp; Shadow Removal</h3>
               <p>
                 5-channel Pix2Pix GAN pipeline combined with morphological thresholding and Sobel edge filters for image artifact removal, packaged with an interactive real-time enhancement GUI.
               </p>
+              <div class="project-metrics-row">
+                <span class="metric-pill">5-Channel Pix2Pix GAN</span>
+                <span class="metric-pill">Sobel Edge Filtering</span>
+                <span class="metric-pill">Real-Time GUI</span>
+              </div>
               <div class="project-card-footer">
                 <div class="project-card-tags">
                   <span>Pix2Pix GAN</span> · <span>Sobel Filters</span> · <span>Python</span>
@@ -499,16 +617,21 @@
               </div>
             </article>
 
-            <!-- Project 08: ABSA Predictor -->
+            <!-- Project 10: ABSA Predictor -->
             <article class="project-card reveal-element stagger-1" data-category="agentic">
               <div class="card-top-row">
-                <span class="project-num-tag">08 · NLP</span>
+                <span class="project-num-tag">10 · NLP</span>
                 <span class="project-status-badge">Streamlit App</span>
               </div>
               <h3>ABSA Predictor</h3>
               <p>
                 Aspect-based sentiment analysis model extracting nuanced polarity towards specific text entities, deployed through an interactive Streamlit application.
               </p>
+              <div class="project-metrics-row">
+                <span class="metric-pill">Aspect-Based Polarity</span>
+                <span class="metric-pill">Entity Sentiment NLP</span>
+                <span class="metric-pill">Live Streamlit App</span>
+              </div>
               <div class="project-card-footer">
                 <div class="project-card-tags">
                   <span>Sentiment Analysis</span> · <span>Streamlit</span>
@@ -524,16 +647,21 @@
               </div>
             </article>
 
-            <!-- Project 09: Star Classification -->
+            <!-- Project 11: Star Classification -->
             <article class="project-card reveal-element stagger-2" data-category="ml">
               <div class="card-top-row">
-                <span class="project-num-tag">09 · Classical ML</span>
+                <span class="project-num-tag">11 · Classical ML</span>
                 <span class="project-status-badge">Spectral Analysis</span>
               </div>
               <h3>Star Classification</h3>
               <p>
                 Machine learning model classifying stellar spectral data based on temperature, luminosity, size, and absolute magnitude distributions.
               </p>
+              <div class="project-metrics-row">
+                <span class="metric-pill">Spectral Classification</span>
+                <span class="metric-pill">Luminosity &amp; Magnitude</span>
+                <span class="metric-pill">Scikit-learn Pipeline</span>
+              </div>
               <div class="project-card-footer">
                 <div class="project-card-tags">
                   <span>Scikit-learn</span> · <span>Astrophysics Data</span>
@@ -546,19 +674,60 @@
               </div>
             </article>
 
+              </div>
+            </div>
           </div>
-        </div>
 
-        <!-- ====================================================================
-             VIEW B: Curated Case-Study Timeline View (Alternative Deep Dive)
-             ==================================================================== -->
-        <div class="curated-timeline-view" id="view-timeline-container">
+          <!-- ====================================================================
+               VIEW B: Curated Case-Study Timeline View (Alternative Deep Dive)
+               ==================================================================== -->
+          <div class="container">
+            <div class="curated-timeline-view" id="view-timeline-container">
           
-          <!-- Case Study 01: Academic Arc -->
+          <!-- Case Study 01: AgentFlow -->
           <article class="timeline-case-study reveal-element">
             <div class="case-study-hero-strip">
               <div class="case-tag-group">
                 <span class="case-num">Case Study 01</span>
+                <span class="project-status-badge developing">🚧 Developing</span>
+                <span class="case-date">2026</span>
+              </div>
+              <span class="project-status-badge developing">Multi-Tenant Platform</span>
+            </div>
+
+            <h3 class="case-study-title">AgentFlow — Full-Stack AI Workflow Orchestration Platform</h3>
+            <p class="case-study-summary">
+              Architecting a multi-tenant AI workflow orchestration platform for building and executing custom AI-powered workflows with stateful agent graphs, secure multi-tenant access controls, and distributed asynchronous background execution.
+            </p>
+
+            <div class="case-study-columns">
+              <div class="case-col">
+                <h5>Backend &amp; Security</h5>
+                <p>Asynchronous REST APIs built with FastAPI, Python, SQLAlchemy, and PostgreSQL, secured by JWT authentication and role-based access control (RBAC).</p>
+              </div>
+              <div class="case-col">
+                <h5>Agentic Orchestration</h5>
+                <p>Integrating LangGraph and LangChain for stateful AI agent orchestration and resilient multi-step workflow execution graphs.</p>
+              </div>
+              <div class="case-col">
+                <h5>Async Jobs &amp; Infra</h5>
+                <p>Distributed background task processing with Redis and Celery, schema migrations managed via Alembic, and containerized orchestration using Docker Compose.</p>
+              </div>
+            </div>
+
+            <div class="case-study-footer">
+              <div class="project-card-tags">
+                <span>FastAPI</span> · <span>LangGraph</span> · <span>PostgreSQL</span> · <span>Redis &amp; Celery</span> · <span>Docker Compose</span>
+              </div>
+              <span class="project-status-badge developing">In Active Development</span>
+            </div>
+          </article>
+
+          <!-- Case Study 02: Academic Arc -->
+          <article class="timeline-case-study reveal-element">
+            <div class="case-study-hero-strip">
+              <div class="case-tag-group">
+                <span class="case-num">Case Study 02</span>
                 <span class="project-status-badge live">Live in Production</span>
                 <span class="case-date">2026</span>
               </div>
@@ -597,11 +766,50 @@
             </div>
           </article>
 
-          <!-- Case Study 02: Building Footprint Extraction -->
+          <!-- Case Study 03: Active Learning for HAR -->
           <article class="timeline-case-study reveal-element">
             <div class="case-study-hero-strip">
               <div class="case-tag-group">
-                <span class="case-num">Case Study 02</span>
+                <span class="case-num">Case Study 03</span>
+                <span class="project-status-badge">Active Learning</span>
+                <span class="case-date">2026</span>
+              </div>
+              <span class="project-status-badge">93.83% Macro-F1 AULC</span>
+            </div>
+
+            <h3 class="case-study-title">Active Learning for Human Activity Recognition</h3>
+            <p class="case-study-summary">
+              Developed a label-efficient machine learning system classifying six human activities (walking, walking upstairs/downstairs, sitting, standing, and laying) from smartphone accelerometer and gyroscope sensor traces while drastically cutting annotation costs.
+            </p>
+
+            <div class="case-study-columns">
+              <div class="case-col">
+                <h5>Query Strategies</h5>
+                <p>Implemented and benchmarked Random Sampling, Uncertainty Sampling, and Query-by-Committee to prioritize high-information sensor samples.</p>
+              </div>
+              <div class="case-col">
+                <h5>Benchmark Results</h5>
+                <p>Achieved 93.83% mean Macro-F1 Area Under the Learning Curve (AULC) using Query-by-Committee across five independent random seeds.</p>
+              </div>
+              <div class="case-col">
+                <h5>Label Efficiency</h5>
+                <p>Reached full supervised baseline performance using only 22% of labeled training data, delivering 78% annotation label savings.</p>
+              </div>
+            </div>
+
+            <div class="case-study-footer">
+              <div class="project-card-tags">
+                <span>Python</span> · <span>Active Learning</span> · <span>Query-by-Committee</span> · <span>Time-Series Sensors</span>
+              </div>
+              <span class="project-status-badge">78% Label Savings</span>
+            </div>
+          </article>
+
+          <!-- Case Study 04: Building Footprint Extraction -->
+          <article class="timeline-case-study reveal-element">
+            <div class="case-study-hero-strip">
+              <div class="case-tag-group">
+                <span class="case-num">Case Study 04</span>
                 <span class="project-status-badge">SpaceNet 2 Benchmark</span>
                 <span class="case-date">2026</span>
               </div>
@@ -640,11 +848,11 @@
             </div>
           </article>
 
-          <!-- Case Study 03: Highway World Model -->
+          <!-- Case Study 05: Highway World Model -->
           <article class="timeline-case-study reveal-element">
             <div class="case-study-hero-strip">
               <div class="case-tag-group">
-                <span class="case-num">Case Study 03</span>
+                <span class="case-num">Case Study 05</span>
                 <span class="project-status-badge">Reinforcement Learning</span>
                 <span class="case-date">2026</span>
               </div>
@@ -683,8 +891,10 @@
             </div>
           </article>
 
-        </div>
+            </div>
+          </div>
 
+        </div>
       </div>
     </section>
 
@@ -1000,6 +1210,6 @@
     <span id="toast-msg">Email copied to clipboard!</span>
   </div>
 
-  <script src="js/main.js?v=5"></script>
+  <script src="js/main.js?v=8"></script>
 </body>
 </html>
